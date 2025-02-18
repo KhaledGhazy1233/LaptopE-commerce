@@ -11,46 +11,47 @@ namespace TechProject.Models
 {
     public class Product
     {
-        [Key]  // This is for Primary Key
+        [Key]
         public int Id { get; set; }
 
-        [Required, MaxLength(255)]  // Marks this field as mandatory
-        [StringLength(255)]  // Limits the length of the string
-        public string? Name { get; set; }
+        [Required, StringLength(255)]
+        public string Name { get; set; }
 
-        [ForeignKey("Category")]  // Foreign Key to the Category table
+        [ForeignKey("Category")]
         public int CategoryId { get; set; }
 
-        public Category? Category { get; set; }  // Navigation property
+        public Category Category { get; set; }
 
-        [MaxLength(255)]  // Limits the length of the string
+        [StringLength(255)]
         public string? Brand { get; set; }
 
-        [MaxLength(255)]  // Limits the length of the string
+        [StringLength(255)]
         public string? Processor { get; set; }
 
-        public int RAM { get; set; }  // Size of RAM in GB
+        [Range(1, 256)]
+        public int RAM { get; set; }
 
-        [MaxLength(255)]  // Limits the length of the string
-        public string? Storage { get; set; }  // Storage type and capacity
+        [StringLength(255)]
+        public string? Storage { get; set; }
 
-        [StringLength(255)]  // Limits the length of the string
+        [StringLength(255)]
         public string? GPU { get; set; }
 
-        public decimal ScreenSize { get; set; }  // Size of the screen in inches
+        [Column(TypeName = "decimal(5,2)")]
+        public decimal ScreenSize { get; set; }
 
-        [MaxLength(50)]  // Limits the length of the string
-        public string? Resolution { get; set; }  // Resolution of the screen
+        [StringLength(50)]
+        public string? Resolution { get; set; }
 
-        [Range(0, double.MaxValue)]  // Ensures the price is positive
+        [Range(0, double.MaxValue)]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
 
-        public int StockQuantity { get; set; }  // Quantity of the product in stock
+        public string? Description { get; set; }
 
-        public string? Description { get; set; }  // Product description
-
-        [StringLength(500)]  // Limits the length of the URL string
+        [StringLength(500)]
         public string? ImageUrl { get; set; }
+       
 
     }
 }

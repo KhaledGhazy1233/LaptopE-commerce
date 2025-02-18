@@ -46,7 +46,7 @@ namespace TechProject.Areas.Admin.Controllers
             TempData["success"] = "CategoryUpdateSuccessfully";
             if (id == 0)
                 return NotFound();
-            var category = _unitofwork.Category.Get(c => c.CategoryId == id);
+            var category = _unitofwork.Category.Get(c => c.Id == id);
             if (category == null)
                 return NotFound();
             return View(category);
@@ -68,7 +68,7 @@ namespace TechProject.Areas.Admin.Controllers
             TempData["success"] = "CategoryDeleteSuccessfully";
             if (id == 0)
                 return NotFound();
-            var category = _unitofwork.Category.Get(u => u.CategoryId == id);
+            var category = _unitofwork.Category.Get(u => u.Id == id);
             if (category == null)
                 return NotFound();
             return View(category);
@@ -77,7 +77,7 @@ namespace TechProject.Areas.Admin.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteRow(int id)
         {
-            var category = _unitofwork.Category.Get(c => c.CategoryId == id);
+            var category = _unitofwork.Category.Get(c => c.Id == id);
             if (category == null)
                 return NotFound();
             _unitofwork.Category.Remove(category);

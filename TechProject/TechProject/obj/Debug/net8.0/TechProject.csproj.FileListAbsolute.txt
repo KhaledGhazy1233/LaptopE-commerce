@@ -264,3 +264,4 @@ E:\TechCommerce\TechProject\TechProject\bin\Debug\net8.0\Tech.Utility.dll
 E:\TechCommerce\TechProject\TechProject\bin\Debug\net8.0\Tech.DataAccess.pdb
 E:\TechCommerce\TechProject\TechProject\bin\Debug\net8.0\Tech.Models.pdb
 E:\TechCommerce\TechProject\TechProject\bin\Debug\net8.0\Tech.Utility.pdb
+E:\TechCommerce\TechProject\TechProject\obj\Debug\net8.0\TechProject.sourcelink.json

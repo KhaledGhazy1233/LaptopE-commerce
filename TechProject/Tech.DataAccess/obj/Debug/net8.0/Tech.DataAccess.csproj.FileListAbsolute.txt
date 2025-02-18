@@ -17,3 +17,4 @@ E:\TechCommerce\TechProject\Tech.DataAccess\obj\Debug\net8.0\refint\Tech.DataAcc
 E:\TechCommerce\TechProject\Tech.DataAccess\obj\Debug\net8.0\Tech.DataAccess.pdb
 E:\TechCommerce\TechProject\Tech.DataAccess\obj\Debug\net8.0\Tech.DataAccess.genruntimeconfig.cache
 E:\TechCommerce\TechProject\Tech.DataAccess\obj\Debug\net8.0\ref\Tech.DataAccess.dll
+E:\TechCommerce\TechProject\Tech.DataAccess\obj\Debug\net8.0\Tech.DataAccess.sourcelink.json

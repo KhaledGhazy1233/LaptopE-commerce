@@ -5,10 +5,12 @@ namespace TechProject.Models
     public class Category
     {
         [Key]
-        public int CategoryId { get; set; }
-        [Required , MaxLength(20)]
-        public string ? Name { get; set; }
-        [Range(1,100,ErrorMessage="Must be between 1-to100")]
-        public int DisplayOrder { get; set; }
+        public int Id { get; set; }
+
+        [Required, StringLength(255)]
+        public string ? Name { get; set; } // مثل Laptops, Accessories, Gaming
+
+        public string? Description { get; set; }
+        public List<Product> ? Products { get; set; }
     }
 }

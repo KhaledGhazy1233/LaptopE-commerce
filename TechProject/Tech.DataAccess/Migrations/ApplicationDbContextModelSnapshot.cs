@@ -23,43 +23,208 @@ namespace Tech.DataAccess.Migrations
 
             modelBuilder.Entity("TechProject.Models.Category", b =>
                 {
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("DisplayOrder")
-                        .HasColumnType("int");
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("Id");
 
                     b.ToTable("Categories");
 
                     b.HasData(
                         new
                         {
-                            CategoryId = 1,
-                            DisplayOrder = 1,
-                            Name = "Action"
+                            Id = 1,
+                            Description = "Various types of laptops",
+                            Name = "Laptops"
                         },
                         new
                         {
-                            CategoryId = 2,
-                            DisplayOrder = 2,
-                            Name = "Scifi"
+                            Id = 2,
+                            Description = "High-performance gaming laptops",
+                            Name = "Gaming Laptops"
                         },
                         new
                         {
-                            CategoryId = 3,
-                            DisplayOrder = 3,
-                            Name = "History"
+                            Id = 3,
+                            Description = "Laptop accessories like bags, coolers, and docks",
+                            Name = "Accessories"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Lightweight, portable laptops",
+                            Name = "Ultrabooks"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "High-end computers for professional use",
+                            Name = "Workstations"
                         });
+                });
+
+            modelBuilder.Entity("TechProject.Models.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Brand")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GPU")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Processor")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int>("RAM")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Resolution")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<decimal>("ScreenSize")
+                        .HasColumnType("decimal(5,2)");
+
+                    b.Property<string>("Storage")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Brand = "Dell",
+                            CategoryId = 1,
+                            Description = "A reliable laptop for everyday use.",
+                            GPU = "NVIDIA GTX 1650",
+                            ImageUrl = "",
+                            Name = "Dell Inspiron 15",
+                            Price = 799.99m,
+                            Processor = "Intel i7",
+                            RAM = 16,
+                            Resolution = "1920x1080",
+                            ScreenSize = 15.6m,
+                            Storage = "512GB SSD"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Brand = "HP",
+                            CategoryId = 2,
+                            Description = "Gaming laptop with great performance.",
+                            GPU = "NVIDIA GTX 1650",
+                            ImageUrl = "",
+                            Name = "HP Pavilion Gaming",
+                            Price = 999.99m,
+                            Processor = "Intel i5",
+                            RAM = 8,
+                            Resolution = "1920x1080",
+                            ScreenSize = 15.6m,
+                            Storage = "1TB HDD"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Brand = "Apple",
+                            CategoryId = 1,
+                            Description = "Thin, light, and powerful MacBook.",
+                            GPU = "Integrated",
+                            ImageUrl = "",
+                            Name = "MacBook Air 13",
+                            Price = 999.99m,
+                            Processor = "M1 Chip",
+                            RAM = 8,
+                            Resolution = "2560x1600",
+                            ScreenSize = 13.3m,
+                            Storage = "256GB SSD"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Brand = "Lenovo",
+                            CategoryId = 1,
+                            Description = "2-in-1 laptop with a sleek design.",
+                            GPU = "Intel UHD Graphics 620",
+                            ImageUrl = "",
+                            Name = "Lenovo Yoga 730",
+                            Price = 1099.99m,
+                            Processor = "Intel i7",
+                            RAM = 16,
+                            Resolution = "1920x1080",
+                            ScreenSize = 13.3m,
+                            Storage = "512GB SSD"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Brand = "Corsair",
+                            CategoryId = 3,
+                            Description = "High-precision gaming mouse.",
+                            ImageUrl = "",
+                            Name = "Corsair Gaming Mouse",
+                            Price = 49.99m,
+                            RAM = 0,
+                            ScreenSize = 0m
+                        });
+                });
+
+            modelBuilder.Entity("TechProject.Models.Product", b =>
+                {
+                    b.HasOne("TechProject.Models.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("TechProject.Models.Category", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

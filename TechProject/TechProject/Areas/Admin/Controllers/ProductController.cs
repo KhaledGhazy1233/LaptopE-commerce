@@ -3,18 +3,27 @@ using TechProject.DataAccess.Data;
 using Tech.DataAccess.Repository.IRepository;
 using TechProject.Models;
 using Tech.DataAccess.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace TechProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class ProductController : Controller
     {
+        private readonly ApplicationDbContext _db;
         private IUnitOfWork _unitofwork;
-        public ProductController(IUnitOfWork unitofwork)
+        public ProductController(IUnitOfWork unitofwork, ApplicationDbContext db)
         {
             _unitofwork = unitofwork;
+            _db = db;
         }
         public IActionResult Index()
+        {
+            var products = _db.Products.Include(p => p.Category).ToList();
+            return View(products); 
+        }
+
+        public IActionResult IndexList()
         {
             var products = _unitofwork.Product.GetAll().ToList();
             return View(products);
