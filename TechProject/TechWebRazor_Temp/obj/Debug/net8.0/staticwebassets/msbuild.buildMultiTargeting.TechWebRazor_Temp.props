@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\TechWebRazor_Temp.props" />
+</Project>

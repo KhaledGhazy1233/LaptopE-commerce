@@ -1,0 +1,11 @@
+E:\TechCommerce\TechProject\Tech.Utility\bin\Debug\net8.0\Tech.Utility.deps.json
+E:\TechCommerce\TechProject\Tech.Utility\bin\Debug\net8.0\Tech.Utility.dll
+E:\TechCommerce\TechProject\Tech.Utility\bin\Debug\net8.0\Tech.Utility.pdb
+E:\TechCommerce\TechProject\Tech.Utility\obj\Debug\net8.0\Tech.Utility.GeneratedMSBuildEditorConfig.editorconfig
+E:\TechCommerce\TechProject\Tech.Utility\obj\Debug\net8.0\Tech.Utility.AssemblyInfoInputs.cache
+E:\TechCommerce\TechProject\Tech.Utility\obj\Debug\net8.0\Tech.Utility.AssemblyInfo.cs
+E:\TechCommerce\TechProject\Tech.Utility\obj\Debug\net8.0\Tech.Utility.csproj.CoreCompileInputs.cache
+E:\TechCommerce\TechProject\Tech.Utility\obj\Debug\net8.0\Tech.Utility.dll
+E:\TechCommerce\TechProject\Tech.Utility\obj\Debug\net8.0\refint\Tech.Utility.dll
+E:\TechCommerce\TechProject\Tech.Utility\obj\Debug\net8.0\Tech.Utility.pdb
+E:\TechCommerce\TechProject\Tech.Utility\obj\Debug\net8.0\ref\Tech.Utility.dll
