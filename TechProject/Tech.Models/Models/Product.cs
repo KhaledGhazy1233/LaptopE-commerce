@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TechProject.Models;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace TechProject.Models
 {
@@ -19,7 +20,7 @@ namespace TechProject.Models
 
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
-
+        [ValidateNever]
         public Category Category { get; set; }
 
         [StringLength(255)]

@@ -10,3 +10,4 @@ E:\TechCommerce\TechProject\Tech.Models\obj\Debug\net8.0\refint\Tech.Models.dll
 E:\TechCommerce\TechProject\Tech.Models\obj\Debug\net8.0\Tech.Models.pdb
 E:\TechCommerce\TechProject\Tech.Models\obj\Debug\net8.0\ref\Tech.Models.dll
 E:\TechCommerce\TechProject\Tech.Models\obj\Debug\net8.0\Tech.Models.sourcelink.json
+E:\TechCommerce\TechProject\Tech.Models\obj\Debug\net8.0\Tech.Models.csproj.AssemblyReference.cache

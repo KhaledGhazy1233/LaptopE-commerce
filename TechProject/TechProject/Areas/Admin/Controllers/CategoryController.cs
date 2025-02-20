@@ -22,7 +22,8 @@ namespace TechProject.Areas.Admin.Controllers
 
         public IActionResult Create()
         {
-            // TempData["success"] = "CategoryCreateSuccessfully";
+             TempData["success"] = "CategoryCreateSuccessfully";
+
             return View();
         }
         [HttpPost]
