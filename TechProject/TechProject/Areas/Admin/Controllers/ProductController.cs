@@ -14,10 +14,12 @@ namespace TechProject.Areas.Admin.Controllers
     {
         private readonly ApplicationDbContext _db;
         private IUnitOfWork _unitofwork;
-        public ProductController(IUnitOfWork unitofwork, ApplicationDbContext db)
+        private IWebHostEnvironment _webHostEnvironment;
+        public ProductController(IUnitOfWork unitofwork, ApplicationDbContext db,IWebHostEnvironment webHostEnvironment)
         {
             _unitofwork = unitofwork;
             _db = db;
+            _webHostEnvironment = webHostEnvironment;
         }
         public IActionResult Index()
         {
@@ -62,20 +64,24 @@ namespace TechProject.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Upsert(ProductVM productVM,IFormFile ? file)
         {
-            
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
             if (ModelState.IsValid)
             {
-                if (productVM.product.Id == 0)
+                if (file != null)
                 {
-                    _unitofwork.Product.Add(productVM.product);
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    string productpath =Path.Combine(wwwRootPath,"images","product");
+                    using (var filestream = new FileStream(Path.Combine(productpath, fileName), FileMode.Create))
+                    { 
+                       file.CopyTo(filestream);
+                    }
+                    productVM.product.ImageUrl = @"\images\product\" + fileName;
                 }
-                else
-                {
-                    _unitofwork.Product.Update(productVM.product);
-                }
+                _unitofwork.Product.Add(productVM.product);
                 _unitofwork.Save();
+                return RedirectToAction("Index");
             }
-            return View();
+            return View(productVM);
         }
         #region
         ////Edit
