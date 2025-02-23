@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "E:\\TechCommerce\\TechProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|e:\\techcommerce\\techproject\\techproject\\areas\\admin\\views\\product\\upsert.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|solutionrelative:techproject\\areas\\admin\\views\\product\\upsert.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|e:\\techcommerce\\techproject\\techproject\\areas\\admin\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|solutionrelative:techproject\\areas\\admin\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|e:\\techcommerce\\techproject\\techproject\\areas\\admin\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|solutionrelative:techproject\\areas\\admin\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FD57557E-0AB5-4646-9D31-319C6E848C88}|Tech.DataAccess\\Tech.DataAccess.csproj|e:\\techcommerce\\techproject\\tech.dataaccess\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FD57557E-0AB5-4646-9D31-319C6E848C88}|Tech.DataAccess\\Tech.DataAccess.csproj|solutionrelative:tech.dataaccess\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|e:\\techcommerce\\techproject\\techproject\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|solutionrelative:techproject\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F3F52407-5D16-485A-A64B-78897F4825C4}|Tech.Models\\Tech.Models.csproj|e:\\techcommerce\\techproject\\tech.models\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F3F52407-5D16-485A-A64B-78897F4825C4}|Tech.Models\\Tech.Models.csproj|solutionrelative:tech.models\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|e:\\techcommerce\\techproject\\techproject\\wwwroot\\js\\product.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|solutionrelative:techproject\\wwwroot\\js\\product.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|e:\\techcommerce\\techproject\\techproject\\areas\\admin\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|solutionrelative:techproject\\areas\\admin\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|e:\\techcommerce\\techproject\\techproject\\areas\\admin\\views\\product\\upsert.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|solutionrelative:techproject\\areas\\admin\\views\\product\\upsert.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|e:\\techcommerce\\techproject\\techproject\\areas\\admin\\views\\product\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|solutionrelative:techproject\\areas\\admin\\views\\product\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -43,38 +47,67 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Product.cs",
-              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\Tech.Models\\Models\\Product.cs",
-              "RelativeDocumentMoniker": "Tech.Models\\Models\\Product.cs",
-              "ToolTip": "E:\\TechCommerce\\TechProject\\Tech.Models\\Models\\Product.cs",
-              "RelativeToolTip": "Tech.Models\\Models\\Product.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAAwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T00:45:01.442Z"
+              "Title": "Product.js",
+              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\js\\Product.js",
+              "RelativeDocumentMoniker": "TechProject\\wwwroot\\js\\Product.js",
+              "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\js\\Product.js",
+              "RelativeToolTip": "TechProject\\wwwroot\\js\\Product.js",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAwBkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-02-23T21:15:31.791Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\Tech.DataAccess\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "Tech.DataAccess\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "E:\\TechCommerce\\TechProject\\Tech.DataAccess\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "Tech.DataAccess\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AQIAAFgAAAAAAAAAAAAwwGUAAAADAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T00:28:59.477Z"
+              "DocumentIndex": 5,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Admin\\Views\\Product\\Delete.cshtml",
+              "RelativeDocumentMoniker": "TechProject\\Areas\\Admin\\Views\\Product\\Delete.cshtml",
+              "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Admin\\Views\\Product\\Delete.cshtml",
+              "RelativeToolTip": "TechProject\\Areas\\Admin\\Views\\Product\\Delete.cshtml",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-23T20:42:03.857Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "Upsert.cshtml",
+              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Admin\\Views\\Product\\Upsert.cshtml",
+              "RelativeDocumentMoniker": "TechProject\\Areas\\Admin\\Views\\Product\\Upsert.cshtml",
+              "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Admin\\Views\\Product\\Upsert.cshtml",
+              "RelativeToolTip": "TechProject\\Areas\\Admin\\Views\\Product\\Upsert.cshtml",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAAAAkAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-23T20:41:45.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Admin\\Views\\Product\\Index.cshtml",
               "RelativeDocumentMoniker": "TechProject\\Areas\\Admin\\Views\\Product\\Index.cshtml",
-              "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Admin\\Views\\Product\\Index.cshtml",
-              "RelativeToolTip": "TechProject\\Areas\\Admin\\Views\\Product\\Index.cshtml",
-              "ViewState": "AQIAABUAAAAAAAAAAAAAADUAAAAcAAAA",
+              "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Admin\\Views\\Product\\Index.cshtml*",
+              "RelativeToolTip": "TechProject\\Areas\\Admin\\Views\\Product\\Index.cshtml*",
+              "ViewState": "AQIAACUAAAAAAAAAAAAgwEAAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-22T23:23:46.366Z"
+              "WhenOpened": "2025-02-23T20:34:33.185Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "TechProject\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "TechProject\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAACQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-23T15:02:21.452Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -84,21 +117,9 @@
               "RelativeDocumentMoniker": "TechProject\\Areas\\Admin\\Controllers\\ProductController.cs",
               "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Admin\\Controllers\\ProductController.cs",
               "RelativeToolTip": "TechProject\\Areas\\Admin\\Controllers\\ProductController.cs",
-              "ViewState": "AQIAAFIAAAAAAAAAAAAEwFgAAAAUAAAA",
+              "ViewState": "AQIAAI8AAAAAAAAAAAAuwKMAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T19:20:27.354Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Upsert.cshtml",
-              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Admin\\Views\\Product\\Upsert.cshtml",
-              "RelativeDocumentMoniker": "TechProject\\Areas\\Admin\\Views\\Product\\Upsert.cshtml",
-              "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Admin\\Views\\Product\\Upsert.cshtml*",
-              "RelativeToolTip": "TechProject\\Areas\\Admin\\Views\\Product\\Upsert.cshtml*",
-              "ViewState": "AQIAAEcAAAAAAAAAAADwv1gAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-21T19:20:18.472Z",
+              "WhenOpened": "2025-02-21T19:20:27.354Z",
               "EditorCaption": ""
             }
           ]

@@ -157,5 +157,12 @@ namespace TechProject.Areas.Admin.Controllers
             _unitofwork.Save();
             return RedirectToAction("Index");
         }
+        #region Apis
+        public IActionResult GetAll()
+        { 
+            var products = _unitofwork.Product.GetAll().ToList();
+            return Json( new {data = products });
+        }
+        #endregion
     }
 }

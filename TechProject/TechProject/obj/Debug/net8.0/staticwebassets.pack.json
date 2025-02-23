@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\images\\product\\07f61868-4a7a-4433-bcd2-4c5cff3eb3a5.png"
     },
     {
+      "Id": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\images\\product\\30aa7114-7304-41fb-b0f7-6680b3769cc8.png",
+      "PackagePath": "staticwebassets\\images\\product\\30aa7114-7304-41fb-b0f7-6680b3769cc8.png"
+    },
+    {
       "Id": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\images\\product\\348ff8b2-ae5a-4a88-8816-8eac8d4f5c05.png",
       "PackagePath": "staticwebassets\\images\\product\\348ff8b2-ae5a-4a88-8816-8eac8d4f5c05.png"
     },
@@ -35,6 +39,14 @@
     {
       "Id": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\images\\product\\c2f158d8-66b2-4408-b5e1-67a971b077d9.png",
       "PackagePath": "staticwebassets\\images\\product\\c2f158d8-66b2-4408-b5e1-67a971b077d9.png"
+    },
+    {
+      "Id": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\images\\product\\f07d4f8c-94e7-4959-a71e-1904dde97be5.png",
+      "PackagePath": "staticwebassets\\images\\product\\f07d4f8c-94e7-4959-a71e-1904dde97be5.png"
+    },
+    {
+      "Id": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\js\\Product.js",
+      "PackagePath": "staticwebassets\\js\\Product.js"
     },
     {
       "Id": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\js\\site.js",
