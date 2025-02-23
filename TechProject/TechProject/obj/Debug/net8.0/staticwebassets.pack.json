@@ -29,6 +29,14 @@
       "PackagePath": "staticwebassets\\images\\product\\7d95029d-b2d6-4377-8572-45090a9b7d40.png"
     },
     {
+      "Id": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\images\\product\\9208d568-fa96-4eb7-aa74-7ffba834b5ba.png",
+      "PackagePath": "staticwebassets\\images\\product\\9208d568-fa96-4eb7-aa74-7ffba834b5ba.png"
+    },
+    {
+      "Id": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\images\\product\\c2f158d8-66b2-4408-b5e1-67a971b077d9.png",
+      "PackagePath": "staticwebassets\\images\\product\\c2f158d8-66b2-4408-b5e1-67a971b077d9.png"
+    },
+    {
       "Id": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

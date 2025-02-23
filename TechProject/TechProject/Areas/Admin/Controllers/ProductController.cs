@@ -72,33 +72,44 @@ namespace TechProject.Areas.Admin.Controllers
 
                 return View(productVM);
             }
-
-            string wwwRootPath = _webHostEnvironment.WebRootPath;
-            if (file != null)
-            {
-                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                string productpath = Path.Combine(wwwRootPath, "images", "product");
-
-                using (var filestream = new FileStream(Path.Combine(productpath, fileName), FileMode.Create))
-                {
-                    file.CopyTo(filestream);
-                }
-
-                productVM.product.ImageUrl = @"\images\product\" + fileName;
-            }
-
-            if (productVM.product.Id == 0)
-            {
-                _unitofwork.Product.Add(productVM.product);
-            }
             else
             {
-                _unitofwork.Product.Update(productVM.product);
-            }
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                if (file != null)
+                {
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    string productpath = Path.Combine(wwwRootPath, "images", "product");
+                    if (!string.IsNullOrEmpty(productVM.product.ImageUrl))
+                    {
+                        var OldImagePath = Path.Combine(wwwRootPath, productVM.product.ImageUrl.Trim('\\'));
+                        if (System.IO.File.Exists(OldImagePath))
+                        { 
+                            System.IO.File.Delete(OldImagePath);
+                        }
+                    
+                    }                   
+                    
+                    using (var filestream = new FileStream(Path.Combine(productpath, fileName), FileMode.Create))
+                    {
+                        file.CopyTo(filestream);
+                    }
 
-            _unitofwork.Save();
-            return RedirectToAction("Index");
-        }
+                    productVM.product.ImageUrl = @"\images\product\" + fileName;
+                }
+
+                if (productVM.product.Id == 0)
+                {
+                    _unitofwork.Product.Add(productVM.product);
+                }
+                else
+                {
+                    _unitofwork.Product.Update(productVM.product);
+                }
+
+                _unitofwork.Save();
+                return RedirectToAction("Index");
+            }
+            }
 
         #region
         ////Edit
