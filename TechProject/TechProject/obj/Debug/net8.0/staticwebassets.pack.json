@@ -13,6 +13,22 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\images\\product\\07f61868-4a7a-4433-bcd2-4c5cff3eb3a5.png",
+      "PackagePath": "staticwebassets\\images\\product\\07f61868-4a7a-4433-bcd2-4c5cff3eb3a5.png"
+    },
+    {
+      "Id": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\images\\product\\348ff8b2-ae5a-4a88-8816-8eac8d4f5c05.png",
+      "PackagePath": "staticwebassets\\images\\product\\348ff8b2-ae5a-4a88-8816-8eac8d4f5c05.png"
+    },
+    {
+      "Id": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\images\\product\\4d26c532-3e23-4a5a-badc-629b5c103e5c.png",
+      "PackagePath": "staticwebassets\\images\\product\\4d26c532-3e23-4a5a-badc-629b5c103e5c.png"
+    },
+    {
+      "Id": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\images\\product\\7d95029d-b2d6-4377-8572-45090a9b7d40.png",
+      "PackagePath": "staticwebassets\\images\\product\\7d95029d-b2d6-4377-8572-45090a9b7d40.png"
+    },
+    {
       "Id": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

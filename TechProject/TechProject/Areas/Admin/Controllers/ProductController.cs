@@ -35,54 +35,71 @@ namespace TechProject.Areas.Admin.Controllers
 
         public IActionResult Upsert(int id)
         {
-
-            IEnumerable<SelectListItem> CategoryList = _unitofwork.Category.GetAll()
-                .Select(c=>new SelectListItem 
-                { 
-                 Text = c.Name,
-                 Value= c.Id.ToString(),
-                });
-            ViewBag.CategoryList = CategoryList;
             ProductVM productVM = new()
             {
                 product = new Product(),
-                CategoryList = CategoryList
+                CategoryList = _unitofwork.Category.GetAll()
+                    .Select(c => new SelectListItem
+                    {
+                        Text = c.Name,
+                        Value = c.Id.ToString(),
+                    })
             };
 
-            if (id == 0)
+            if (id != 0)
             {
-                // create
+                productVM.product = _unitofwork.Product.Get(p => p.Id == id);
+                if (productVM.product == null)
+                {
+                    return NotFound();
+                }
+            }
+
+            return View(productVM);
+        }
+
+        [HttpPost]
+        public IActionResult Upsert(ProductVM productVM, IFormFile? file)
+        {
+            if (!ModelState.IsValid)
+            {
+                productVM.CategoryList = _unitofwork.Category.GetAll()
+                    .Select(c => new SelectListItem
+                    {
+                        Text = c.Name,
+                        Value = c.Id.ToString(),
+                    });
+
                 return View(productVM);
+            }
+
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
+            if (file != null)
+            {
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                string productpath = Path.Combine(wwwRootPath, "images", "product");
+
+                using (var filestream = new FileStream(Path.Combine(productpath, fileName), FileMode.Create))
+                {
+                    file.CopyTo(filestream);
+                }
+
+                productVM.product.ImageUrl = @"\images\product\" + fileName;
+            }
+
+            if (productVM.product.Id == 0)
+            {
+                _unitofwork.Product.Add(productVM.product);
             }
             else
             {
-                productVM.product = _unitofwork.Product.Get(p=>p.Id==id);
-                return View(productVM);
+                _unitofwork.Product.Update(productVM.product);
             }
-            
+
+            _unitofwork.Save();
+            return RedirectToAction("Index");
         }
-        [HttpPost]
-        public IActionResult Upsert(ProductVM productVM,IFormFile ? file)
-        {
-            string wwwRootPath = _webHostEnvironment.WebRootPath;
-            if (ModelState.IsValid)
-            {
-                if (file != null)
-                {
-                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                    string productpath =Path.Combine(wwwRootPath,"images","product");
-                    using (var filestream = new FileStream(Path.Combine(productpath, fileName), FileMode.Create))
-                    { 
-                       file.CopyTo(filestream);
-                    }
-                    productVM.product.ImageUrl = @"\images\product\" + fileName;
-                }
-                _unitofwork.Product.Add(productVM.product);
-                _unitofwork.Save();
-                return RedirectToAction("Index");
-            }
-            return View(productVM);
-        }
+
         #region
         ////Edit
         //public IActionResult Edit(int id)
