@@ -83,15 +83,17 @@ namespace TechProject.Areas.Admin.Controllers
                     {
                         var OldImagePath = Path.Combine(wwwRootPath, productVM.product.ImageUrl.Trim('\\'));
                         if (System.IO.File.Exists(OldImagePath))
-                        { 
+                        {
                             System.IO.File.Delete(OldImagePath);
                         }
-                    
-                    }                   
-                    
-                    using (var filestream = new FileStream(Path.Combine(productpath, fileName), FileMode.Create))
+
+                    }
+                    else
                     {
-                        file.CopyTo(filestream);
+                        using (var filestream = new FileStream(Path.Combine(productpath, fileName), FileMode.Create))
+                        {
+                            file.CopyTo(filestream);
+                        }
                     }
 
                     productVM.product.ImageUrl = @"\images\product\" + fileName;
@@ -136,27 +138,27 @@ namespace TechProject.Areas.Admin.Controllers
         //    return View();
         //}
         #endregion
+        [HttpPost]
         public IActionResult Delete(int id)
         {
-            TempData["success"] = "ProductDeleteSuccessfully";
             if (id == 0)
-                return NotFound();
+                return Json(new { success = false, message = "Invalid Product ID!" });
+
             var product = _unitofwork.Product.Get(u => u.Id == id);
             if (product == null)
-                return NotFound();
-            return View(product);
-        }
-        //Delete
-        [HttpPost, ActionName("Delete")]
-        public IActionResult DeleteRow(int id)
-        {
-            var product = _unitofwork.Product.Get(c => c.Id == id);
-            if (product == null)
-                return NotFound();
+                return Json(new { success = false, message = "Product not found!" });
+            
+                var OldImagePath = Path.Combine(_webHostEnvironment.WebRootPath, product.ImageUrl.Trim('\\'));
+                if (System.IO.File.Exists(OldImagePath))
+                {
+                    System.IO.File.Delete(OldImagePath);
+                }
             _unitofwork.Product.Remove(product);
             _unitofwork.Save();
-            return RedirectToAction("Index");
+
+            return Json(new { success = true, message = "Product deleted successfully!" });
         }
+
         #region Apis
         public IActionResult GetAll()
         { 
