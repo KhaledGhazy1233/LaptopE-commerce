@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using Tech.DataAccess.Repository.IRepository;
 using Tech.DataAccess.Repository;
 using TechProject.DataAccess.Data;
-
 namespace TechProject
 {
     public class Program

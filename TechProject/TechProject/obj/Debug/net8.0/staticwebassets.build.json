@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kA1H+zAevOvJMD1v9skqwwHeHRjZzTtgh95i0+eej1Q=",
+  "Hash": "KcZEy9L6oeHOhFpQ9F/loAf08lBDM2v4fLgz33ffb9A=",
   "Source": "TechProject",
   "BasePath": "_content/TechProject",
   "Mode": "Default",
@@ -112,12 +112,12 @@
       "OriginalItemSpec": "wwwroot\\images\\product\\2bd9a1b6-7647-4265-a9fc-f1a3c904cec9.png"
     },
     {
-      "Identity": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\images\\product\\5927b63a-05fe-4b7e-bdf6-39572ccf20ae.png",
+      "Identity": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\images\\product\\92b263ed-daf1-42b6-aafc-14eed0d754f4.png",
       "SourceId": "TechProject",
       "SourceType": "Discovered",
       "ContentRoot": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\",
       "BasePath": "_content/TechProject",
-      "RelativePath": "images/product/5927b63a-05fe-4b7e-bdf6-39572ccf20ae.png",
+      "RelativePath": "images/product/92b263ed-daf1-42b6-aafc-14eed0d754f4.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -128,7 +128,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\product\\5927b63a-05fe-4b7e-bdf6-39572ccf20ae.png"
+      "OriginalItemSpec": "wwwroot\\images\\product\\92b263ed-daf1-42b6-aafc-14eed0d754f4.png"
     },
     {
       "Identity": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\images\\product\\a89dc552-c4ba-47f3-bf12-99f74f531cc0.png",
@@ -148,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\product\\a89dc552-c4ba-47f3-bf12-99f74f531cc0.png"
+    },
+    {
+      "Identity": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\images\\product\\b8e95634-d449-40b7-afc0-f7ae06748fea.png",
+      "SourceId": "TechProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\",
+      "BasePath": "_content/TechProject",
+      "RelativePath": "images/product/b8e95634-d449-40b7-afc0-f7ae06748fea.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\product\\b8e95634-d449-40b7-afc0-f7ae06748fea.png"
     },
     {
       "Identity": "E:\\TechCommerce\\TechProject\\TechProject\\wwwroot\\js\\site.js",

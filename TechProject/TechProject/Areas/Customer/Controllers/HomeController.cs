@@ -1,22 +1,35 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using TechProject.Models;
-
+using TechProject.DataAccess;
+using TechProject.DataAccess.Data;
+using Microsoft.EntityFrameworkCore;
+using Tech.DataAccess.Repository;
+using Tech.DataAccess.Repository.IRepository;
 namespace TechProject.Areas.Customer.Controllers
 {
     [Area("Customer")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private ApplicationDbContext _db;
+        private IUnitOfWork _unitofwork;
+        public HomeController(ILogger<HomeController> logger ,ApplicationDbContext db, IUnitOfWork unitOfWork)
         {
             _logger = logger;
+            _db = db;
+            _unitofwork = unitOfWork;
         }
 
+        public IActionResult Details(int id)
+        {
+            var product = _unitofwork.Product.Get(p=>p.Id == id);
+            return View(product);
+        }
         public IActionResult Index()
         {
-            return View();
+            var ProductList = _db.Products.Include(p=>p.Category).ToList();
+            return View(ProductList);
         }
 
         public IActionResult Privacy()

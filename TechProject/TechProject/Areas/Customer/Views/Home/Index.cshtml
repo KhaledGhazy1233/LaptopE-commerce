@@ -1,8 +1,31 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<Product>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row p-3">
+    @foreach (var product in Model)
+    {
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card border-0 p-3 shadow-lg border-top border-5 rounded custom-card">
+                <img src="@product.ImageUrl" class="card-img-top rounded" style="height: 200px; object-fit: cover;" />
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark opacity-75 text-uppercase">@product.Name</h5>
+                    <p class="text-muted">@product.Category.Name - @product.Brand</p>
+                    <p class="text-dark text-opacity-75">Price: <span class="fw-bold">@product.Price.ToString("C")</span></p>
+                    <a href="/Customer/Home/Details/" class="btn btn-secondary w-100 py-2"> Details</a>
+                </div>
+            </div>
+        </div>
+    }
 </div>
+
+<style>
+    .custom-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 20px;
+    }
+
+        .custom-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+</style>
+
