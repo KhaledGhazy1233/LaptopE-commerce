@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "E:\\TechCommerce\\TechProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|e:\\techcommerce\\techproject\\techproject\\areas\\customer\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|solutionrelative:techproject\\areas\\customer\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\TechCommerce\\TechProject\\Tech.DataAccess\\Migrations\\20250226195707_AddIdentityTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Tech.DataAccess\\Migrations\\20250226195707_AddIdentityTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|e:\\techcommerce\\techproject\\techproject\\areas\\customer\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|solutionrelative:techproject\\areas\\customer\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|e:\\techcommerce\\techproject\\techproject\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|solutionrelative:techproject\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|e:\\techcommerce\\techproject\\techproject\\areas\\admin\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|solutionrelative:techproject\\areas\\admin\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|e:\\techcommerce\\techproject\\techproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|solutionrelative:techproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|e:\\techcommerce\\techproject\\techproject\\areas\\customer\\views\\home\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|solutionrelative:techproject\\areas\\customer\\views\\home\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|e:\\techcommerce\\techproject\\techproject\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|solutionrelative:techproject\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F3F52407-5D16-485A-A64B-78897F4825C4}|Tech.Models\\Tech.Models.csproj|e:\\techcommerce\\techproject\\tech.models\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F3F52407-5D16-485A-A64B-78897F4825C4}|Tech.Models\\Tech.Models.csproj|solutionrelative:tech.models\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|e:\\techcommerce\\techproject\\techproject\\views\\shared\\_notification.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|solutionrelative:techproject\\views\\shared\\_notification.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD57557E-0AB5-4646-9D31-319C6E848C88}|Tech.DataAccess\\Tech.DataAccess.csproj|e:\\techcommerce\\techproject\\tech.dataaccess\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD57557E-0AB5-4646-9D31-319C6E848C88}|Tech.DataAccess\\Tech.DataAccess.csproj|solutionrelative:tech.dataaccess\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,8 +34,60 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20250226195707_AddIdentityTable.cs",
+              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\Tech.DataAccess\\Migrations\\20250226195707_AddIdentityTable.cs",
+              "RelativeDocumentMoniker": "Tech.DataAccess\\Migrations\\20250226195707_AddIdentityTable.cs",
+              "ToolTip": "E:\\TechCommerce\\TechProject\\Tech.DataAccess\\Migrations\\20250226195707_AddIdentityTable.cs",
+              "RelativeToolTip": "Tech.DataAccess\\Migrations\\20250226195707_AddIdentityTable.cs",
+              "ViewState": "AQIAAFsAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-26T19:57:07.862Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Notification.cshtml",
+              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\Views\\Shared\\_Notification.cshtml",
+              "RelativeDocumentMoniker": "TechProject\\Views\\Shared\\_Notification.cshtml",
+              "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\Views\\Shared\\_Notification.cshtml",
+              "RelativeToolTip": "TechProject\\Views\\Shared\\_Notification.cshtml",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-26T19:47:19.99Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "TechProject\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "TechProject\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAADQAAAAAAAAAAAAowEAAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-26T19:32:22.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_LoginPartial.cshtml",
+              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeDocumentMoniker": "TechProject\\Views\\Shared\\_LoginPartial.cshtml",
+              "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeToolTip": "TechProject\\Views\\Shared\\_LoginPartial.cshtml",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAAABcAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-26T19:14:08.955Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
@@ -43,66 +99,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Admin\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "TechProject\\Areas\\Admin\\Controllers\\ProductController.cs",
-              "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Admin\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "TechProject\\Areas\\Admin\\Controllers\\ProductController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAHAAAA",
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\Program.cs",
+              "RelativeDocumentMoniker": "TechProject\\Program.cs",
+              "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\Program.cs",
+              "RelativeToolTip": "TechProject\\Program.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAowCMAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T07:07:28.068Z",
+              "WhenOpened": "2025-02-26T18:59:49.225Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Customer\\Views\\Home\\Details.cshtml",
-              "RelativeDocumentMoniker": "TechProject\\Areas\\Customer\\Views\\Home\\Details.cshtml",
-              "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Customer\\Views\\Home\\Details.cshtml",
-              "RelativeToolTip": "TechProject\\Areas\\Customer\\Views\\Home\\Details.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-25T06:57:17.318Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Product.cs",
-              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\Tech.Models\\Models\\Product.cs",
-              "RelativeDocumentMoniker": "Tech.Models\\Models\\Product.cs",
-              "ToolTip": "E:\\TechCommerce\\TechProject\\Tech.Models\\Models\\Product.cs",
-              "RelativeToolTip": "Tech.Models\\Models\\Product.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAAwAAAAAAAAAAA",
+              "DocumentIndex": 5,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\Tech.DataAccess\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Tech.DataAccess\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "E:\\TechCommerce\\TechProject\\Tech.DataAccess\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Tech.DataAccess\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAYAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T05:44:19.849Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Customer\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "TechProject\\Areas\\Customer\\Views\\Home\\Index.cshtml",
-              "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Customer\\Views\\Home\\Index.cshtml*",
-              "RelativeToolTip": "TechProject\\Areas\\Customer\\Views\\Home\\Index.cshtml*",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAA0AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-24T18:53:47.111Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Customer\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "TechProject\\Areas\\Customer\\Controllers\\HomeController.cs",
-              "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Customer\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "TechProject\\Areas\\Customer\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAwBkAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-24T18:49:09.898Z",
+              "WhenOpened": "2025-02-26T18:40:10.513Z",
               "EditorCaption": ""
             }
           ]
