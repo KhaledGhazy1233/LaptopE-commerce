@@ -3,6 +3,34 @@
   "WorkspaceRootPath": "E:\\TechCommerce\\TechProject\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|e:\\techcommerce\\techproject\\techproject\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|solutionrelative:techproject\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|e:\\techcommerce\\techproject\\techproject\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|solutionrelative:techproject\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|e:\\techcommerce\\techproject\\techproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|solutionrelative:techproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\TechCommerce\\TechProject\\Tech.DataAccess\\Migrations\\20250226203951_ExtendIdentityUserTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Tech.DataAccess\\Migrations\\20250226203951_ExtendIdentityUserTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD57557E-0AB5-4646-9D31-319C6E848C88}|Tech.DataAccess\\Tech.DataAccess.csproj|e:\\techcommerce\\techproject\\tech.dataaccess\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD57557E-0AB5-4646-9D31-319C6E848C88}|Tech.DataAccess\\Tech.DataAccess.csproj|solutionrelative:tech.dataaccess\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F52407-5D16-485A-A64B-78897F4825C4}|Tech.Models\\Tech.Models.csproj|e:\\techcommerce\\techproject\\tech.models\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3F52407-5D16-485A-A64B-78897F4825C4}|Tech.Models\\Tech.Models.csproj|solutionrelative:tech.models\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F52407-5D16-485A-A64B-78897F4825C4}|Tech.Models\\Tech.Models.csproj|e:\\techcommerce\\techproject\\tech.models\\viewmodels\\productvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3F52407-5D16-485A-A64B-78897F4825C4}|Tech.Models\\Tech.Models.csproj|solutionrelative:tech.models\\viewmodels\\productvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\TechCommerce\\TechProject\\Tech.DataAccess\\Migrations\\20250226195707_AddIdentityTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Tech.DataAccess\\Migrations\\20250226195707_AddIdentityTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -21,10 +49,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|e:\\techcommerce\\techproject\\techproject\\views\\shared\\_notification.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{6C42EE43-D2E1-4942-B501-B17EE6E624EC}|TechProject\\TechProject.csproj|solutionrelative:techproject\\views\\shared\\_notification.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FD57557E-0AB5-4646-9D31-319C6E848C88}|Tech.DataAccess\\Tech.DataAccess.csproj|e:\\techcommerce\\techproject\\tech.dataaccess\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FD57557E-0AB5-4646-9D31-319C6E848C88}|Tech.DataAccess\\Tech.DataAccess.csproj|solutionrelative:tech.dataaccess\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,6 +63,84 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Register.cshtml.cs",
+              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "RelativeDocumentMoniker": "TechProject\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "RelativeToolTip": "TechProject\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "ViewState": "AQIAAJkAAAAAAAAAAAAUwJ0AAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-26T21:11:50.602Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "TechProject\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeToolTip": "TechProject\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-26T21:11:42.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "20250226203951_ExtendIdentityUserTable.cs",
+              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\Tech.DataAccess\\Migrations\\20250226203951_ExtendIdentityUserTable.cs",
+              "RelativeDocumentMoniker": "Tech.DataAccess\\Migrations\\20250226203951_ExtendIdentityUserTable.cs",
+              "ToolTip": "E:\\TechCommerce\\TechProject\\Tech.DataAccess\\Migrations\\20250226203951_ExtendIdentityUserTable.cs",
+              "RelativeToolTip": "Tech.DataAccess\\Migrations\\20250226203951_ExtendIdentityUserTable.cs",
+              "ViewState": "AQIAAEUAAAAAAAAAAAAYwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-26T20:39:52.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\Tech.Models\\Models\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "Tech.Models\\Models\\ApplicationUser.cs",
+              "ToolTip": "E:\\TechCommerce\\TechProject\\Tech.Models\\Models\\ApplicationUser.cs",
+              "RelativeToolTip": "Tech.Models\\Models\\ApplicationUser.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAkwBUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-26T20:32:23.45Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProductVM.cs",
+              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\Tech.Models\\ViewModels\\ProductVM.cs",
+              "RelativeDocumentMoniker": "Tech.Models\\ViewModels\\ProductVM.cs",
+              "ToolTip": "E:\\TechCommerce\\TechProject\\Tech.Models\\ViewModels\\ProductVM.cs",
+              "RelativeToolTip": "Tech.Models\\ViewModels\\ProductVM.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-26T20:30:53.27Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\appsettings.json",
+              "RelativeDocumentMoniker": "TechProject\\appsettings.json",
+              "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\appsettings.json",
+              "RelativeToolTip": "TechProject\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-02-26T19:58:27.402Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "20250226195707_AddIdentityTable.cs",
               "DocumentMoniker": "E:\\TechCommerce\\TechProject\\Tech.DataAccess\\Migrations\\20250226195707_AddIdentityTable.cs",
               "RelativeDocumentMoniker": "Tech.DataAccess\\Migrations\\20250226195707_AddIdentityTable.cs",
@@ -51,20 +153,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "_Notification.cshtml",
-              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\Views\\Shared\\_Notification.cshtml",
-              "RelativeDocumentMoniker": "TechProject\\Views\\Shared\\_Notification.cshtml",
-              "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\Views\\Shared\\_Notification.cshtml",
-              "RelativeToolTip": "TechProject\\Views\\Shared\\_Notification.cshtml",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-26T19:47:19.99Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 10,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "TechProject\\Views\\Shared\\_Layout.cshtml",
@@ -77,7 +166,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\Tech.DataAccess\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Tech.DataAccess\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "E:\\TechCommerce\\TechProject\\Tech.DataAccess\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Tech.DataAccess\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AQIAAG0AAAAAAAAAAAA8wHEAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-26T18:40:10.513Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "_Notification.cshtml",
+              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\Views\\Shared\\_Notification.cshtml",
+              "RelativeDocumentMoniker": "TechProject\\Views\\Shared\\_Notification.cshtml",
+              "ToolTip": "E:\\TechCommerce\\TechProject\\TechProject\\Views\\Shared\\_Notification.cshtml",
+              "RelativeToolTip": "TechProject\\Views\\Shared\\_Notification.cshtml",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-26T19:47:19.99Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "_LoginPartial.cshtml",
               "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\Views\\Shared\\_LoginPartial.cshtml",
               "RelativeDocumentMoniker": "TechProject\\Views\\Shared\\_LoginPartial.cshtml",
@@ -98,7 +213,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 9,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\TechCommerce\\TechProject\\TechProject\\Program.cs",
               "RelativeDocumentMoniker": "TechProject\\Program.cs",
@@ -107,19 +222,6 @@
               "ViewState": "AQIAABYAAAAAAAAAAAAowCMAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-26T18:59:49.225Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "E:\\TechCommerce\\TechProject\\Tech.DataAccess\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "Tech.DataAccess\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "E:\\TechCommerce\\TechProject\\Tech.DataAccess\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "Tech.DataAccess\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAYAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T18:40:10.513Z",
               "EditorCaption": ""
             }
           ]

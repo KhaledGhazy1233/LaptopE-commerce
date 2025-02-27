@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\TechWebRazor_Temp.props" />
-</Project>

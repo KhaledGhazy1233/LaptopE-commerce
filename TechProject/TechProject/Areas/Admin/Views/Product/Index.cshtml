@@ -1,0 +1,112 @@
+﻿@model List<Product>
+<partial name ="_Notification"/>
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Product List</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <div class="row pb-3">
+            <div class="col-6">
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="Product" asp-action="Upsert" class="btn btn-secondary">
+                    <i class="bi bi-plus-circle"></i>  Create New Product
+                </a>
+            </div>
+        </div>
+
+        <table class=".delete-product table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ProductName</th>
+                    <th>Description</th>
+                    <th>Brand</th>
+                    <th>Processor</th>
+                    <th>Ram</th>
+                    <th>Storage</th>
+                    <th>Gpu</th>
+                    <th>ScreenSize</th>
+                    <th>Resolution</th>
+                    <th>Price</th>
+                    <th>CategoryName</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj in Model)
+                {
+                    <tr>
+                        <td>@obj.Name</td>
+                        <td>@obj.Description</td>
+                        <td>@obj.Brand</td>
+                        <td>@obj.Processor</td>
+                        <td>@obj.RAM</td>
+                        <td>@obj.Storage</td>
+                        <td>@obj.GPU</td>
+                        <td>@obj.ScreenSize</td>
+                        <td>@obj.Resolution</td>
+                        <td>@obj.Price</td>
+                        <td>@obj.Category.Name</td>
+                        <td>
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Product" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-secondary mx-2">
+                                    <i class="bi bi-pencil-square"></i> Update
+                                </a>
+                                <a href="#" class="btn btn-danger mx-2 delete-product" data-id="@obj.Id">
+                                    <i class="bi bi-trash-fill"></i> Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(".delete-product").click(function (e) {
+                e.preventDefault();
+                var productId = $(this).data("id"); // ✅ تعديل استدعاء data-id
+
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#d33",
+                    cancelButtonColor: "#3085d6",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "/Admin/Product/Delete/ "+ productId,
+                            type: "POST", // ✅ تغيير `DELETE` إلى `POST`
+                            headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() }, // ✅ دعم CSRF لو مفعّل
+                            success: function (response) {
+                                if (response.success) {
+                                    Swal.fire("Deleted!", response.message, "success");
+                                    setTimeout(() => location.reload(), 500);
+                                } else {
+                                    Swal.fire("Error!", response.message, "error");
+                                }
+                            },
+                            error: function () {
+                                Swal.fire("Error!", "Something went wrong!", "error");
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+
+
