@@ -3,6 +3,9 @@ using Tech.DataAccess.Repository.IRepository;
 using Tech.DataAccess.Repository;
 using TechProject.DataAccess.Data;
 using Microsoft.AspNetCore.Identity;
+using Tech.Utility;
+using Microsoft.AspNetCore.Identity.UI.Services;
+
 namespace TechProject
 {
     public class Program
@@ -16,10 +19,26 @@ namespace TechProject
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            builder.Services.AddDefaultIdentity<IdentityUser>()
+            builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()
               .AddEntityFrameworkStores<ApplicationDbContext>();
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath =$"/Identity/Account/Login";
+                options.LogoutPath = $"/Identity/Account/Logout";
+                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+            });
+
              builder.Services.AddRazorPages();
             builder.Services.AddScoped<IUnitOfWork,UnitOfWork >();
+            builder.Services.AddScoped<IEmailSender,EmailSender>();
+            builder.Services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = false; 
+                options.Password.RequiredLength = 6; 
+                options.Password.RequireNonAlphanumeric = false; 
+                options.Password.RequireUppercase = false; 
+                options.Password.RequireLowercase = false; 
+            });
 
             var app = builder.Build();
 

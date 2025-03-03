@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Tech.Utility
 {
-    internal class SD
+    public static class SD
     {
+        public const string Role_User_Admin = "Admin";
+        public const string Role_User_Customer = "customer";
+        public const string Role_User_Employee = "Employee";
     }
 }
