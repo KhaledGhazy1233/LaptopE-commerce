@@ -3,10 +3,13 @@ using TechProject.DataAccess.Data;
 using Tech.DataAccess.Repository.IRepository;
 using TechProject.Models;
 using Tech.DataAccess.Repository;
+using Microsoft.AspNetCore.Authorization;
+using Tech.Utility;
 
 namespace TechProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles=SD.Role_User_Admin)]
     public class CategoryController : Controller
     {
         private IUnitOfWork _unitofwork;

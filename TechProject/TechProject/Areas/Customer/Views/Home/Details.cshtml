@@ -1,1 +1,53 @@
 ﻿@model Product
+
+<div class="container mt-4">
+    <div class="card shadow-lg p-4">
+
+        <!-- Full Width Header -->
+        <div class="bg-secondary bg-gradient text-white text-center py-4 mb-3 rounded">
+            <h2 class="text-uppercase">Details</h2>
+        </div>
+
+        <!-- Back to Home Button -->
+        <div class="text-center mb-3">
+            <button class="btn btn-outline-secondary"><a asp-area="Customer" asp-action="Index">BACK TO HOME</a></button>
+        </div>
+
+        <!-- Product Name & Brand -->
+        <h2 class="text-center text-uppercase fw-bold">@Model.Name</h2>
+        <h5 class="text-center text-muted">by @Model.Brand</h5>
+
+        <div class="row mt-4">
+            <!-- Product Image -->
+            <div class="col-md-4 text-center">
+                <img src="@Model.ImageUrl" class="img-fluid rounded shadow-sm" alt="@Model.Name" style="max-height: 250px;">
+            </div>
+
+            <!-- Product Details -->
+            <div class="col-md-8">
+                <span class="badge bg-warning text-dark mb-2">Action</span>
+                <p><strong>Processor:</strong> @Model.Processor</p>
+                <p><strong>RAM:</strong> @Model.RAM GB</p>
+                <p><strong>Storage:</strong> @Model.Storage</p>
+                <p><strong>GPU:</strong> @Model.GPU</p>
+                <p><strong>Screen Size:</strong> @Model.ScreenSize" inches</p>
+                <p><strong>Resolution:</strong> @Model.Resolution</p>
+                <p><strong>Price:</strong> <span class="text-success fw-bold">$@Model.Price</span></p>
+
+                <p class="text-muted">@Model.Description</p>
+
+                <!-- Quantity Input -->
+                <div class="input-group mt-3">
+                    <label class="me-2 fw-bold">Count</label>
+                    <input type="number" class="form-control w-25" value="1" min="1">
+                </div>
+
+                <!-- Add to Cart Button -->
+                <button class="btn btn-dark w-100 mt-3" disabled>ADD TO CART (COMING SOON...)</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap Styles -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">

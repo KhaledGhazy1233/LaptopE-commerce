@@ -6,10 +6,13 @@ using Tech.DataAccess.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Tech.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Tech.Utility;
 
 namespace TechProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_User_Admin)]
     public class ProductController : Controller
     {
         private readonly ApplicationDbContext _db;
