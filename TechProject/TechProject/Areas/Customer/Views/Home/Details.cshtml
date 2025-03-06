@@ -1,49 +1,59 @@
 ﻿@model Product
 
-<div class="container mt-4">
-    <div class="card shadow-lg p-4">
-
-        <!-- Full Width Header -->
-        <div class="bg-secondary bg-gradient text-white text-center py-4 mb-3 rounded">
-            <h2 class="text-uppercase">Details</h2>
+<div class="container mt-3">
+    <div class="card shadow border-0">
+        <div class="card-header bg-secondary bg-gradient text-white text-center">
+            <h2>@Model.Name</h2>
+            <h5 class="text-light">by @Model.Brand</h5>
         </div>
+        <div class="card-body p-4">
+            <a asp-action="Index" class="btn btn-outline-secondary mb-3">Back to Home</a>
 
-        <!-- Back to Home Button -->
-        <div class="text-center mb-3">
-            <button class="btn btn-outline-secondary"><a asp-area="Customer" asp-action="Index">BACK TO HOME</a></button>
-        </div>
-
-        <!-- Product Name & Brand -->
-        <h2 class="text-center text-uppercase fw-bold">@Model.Name</h2>
-        <h5 class="text-center text-muted">by @Model.Brand</h5>
-
-        <div class="row mt-4">
-            <!-- Product Image -->
-            <div class="col-md-4 text-center">
-                <img src="@Model.ImageUrl" class="img-fluid rounded shadow-sm" alt="@Model.Name" style="max-height: 250px;">
-            </div>
-
-            <!-- Product Details -->
-            <div class="col-md-8">
-                <span class="badge bg-warning text-dark mb-2">Action</span>
-                <p><strong>Processor:</strong> @Model.Processor</p>
-                <p><strong>RAM:</strong> @Model.RAM GB</p>
-                <p><strong>Storage:</strong> @Model.Storage</p>
-                <p><strong>GPU:</strong> @Model.GPU</p>
-                <p><strong>Screen Size:</strong> @Model.ScreenSize" inches</p>
-                <p><strong>Resolution:</strong> @Model.Resolution</p>
-                <p><strong>Price:</strong> <span class="text-success fw-bold">$@Model.Price</span></p>
-
-                <p class="text-muted">@Model.Description</p>
-
-                <!-- Quantity Input -->
-                <div class="input-group mt-3">
-                    <label class="me-2 fw-bold">Count</label>
-                    <input type="number" class="form-control w-25" value="1" min="1">
+            <div class="row">
+                <!-- Product Image -->
+                <div class="col-md-4 text-center">
+                    <img src="@Model.ImageUrl" alt="Product Image" class="img-fluid rounded shadow">
                 </div>
 
-                <!-- Add to Cart Button -->
-                <button class="btn btn-dark w-100 mt-3" disabled>ADD TO CART (COMING SOON...)</button>
+                <!-- Product Details -->
+                <div class="col-md-8">
+                    @* <span class="badge bg-warning text-dark mb-2">@Model.Category.Name</span> *@
+
+                    <p><strong>Processor:</strong> @Model.Processor</p>
+                    <p><strong>RAM:</strong> @Model.RAM GB</p>
+                    <p><strong>Storage:</strong> @Model.Storage</p>
+                    <p><strong>GPU:</strong> @Model.GPU</p>
+                    <p><strong>Screen:</strong> @Model.ScreenSize" @Model.Resolution</p>
+                    <p><strong>Price:</strong> @Model.ScreenSize" @Model.Price</p>
+
+             @*        <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Quantity</th>
+                                <th>1-50</th>
+                                <th>51-100</th>
+                                <th>100+</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Price</strong></td>
+                                <td class="text-warning"><strong>$@Model.Price</strong></td>
+                                <td class="text-warning"><strong>$@((Model.Price * 0.95M).ToString("0.00"))</strong></td>
+                                <td class="text-warning"><strong>$@((Model.Price * 0.90M).ToString("0.00"))</strong></td>
+                            </tr>
+                        </tbody>
+                    </table> *@
+
+                    <p class="text-muted">@Model.Description</p>
+
+                    <div class="d-flex">
+                        <label for="count" class="me-2">Count</label>
+                        <input type="number" id="count" class="form-control w-25" value="1" min="1">
+                    </div>
+
+                    <button class="btn btn-dark mt-3 w-100" disabled>ADD TO CART (COMING SOON...)</button>
+                </div>
             </div>
         </div>
     </div>
