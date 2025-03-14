@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TechProject.Models;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Tech.Models.Models;
 
 namespace TechProject.Models
 {
@@ -50,9 +51,9 @@ namespace TechProject.Models
 
         public string? Description { get; set; }
 
-        [StringLength(500)]
-        public string? ImageUrl { get; set; }
-       
+        public  List<ProductImage?> ProductImages { get; set; } = new List<ProductImage>();
+        public string? headerImageUrl { get; set; }
+
 
     }
 }

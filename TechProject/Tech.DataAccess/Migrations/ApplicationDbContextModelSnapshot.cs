@@ -243,6 +243,9 @@ namespace Tech.DataAccess.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -252,6 +255,28 @@ namespace Tech.DataAccess.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("Tech.Models.Models.ProductImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductImages");
                 });
 
             modelBuilder.Entity("TechProject.Models.Category", b =>
@@ -329,10 +354,6 @@ namespace Tech.DataAccess.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<string>("ImageUrl")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -359,6 +380,9 @@ namespace Tech.DataAccess.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<string>("headerImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
@@ -373,7 +397,6 @@ namespace Tech.DataAccess.Migrations
                             CategoryId = 1,
                             Description = "A reliable laptop for everyday use.",
                             GPU = "NVIDIA GTX 1650",
-                            ImageUrl = "",
                             Name = "Dell Inspiron 15",
                             Price = 799.99m,
                             Processor = "Intel i7",
@@ -389,7 +412,6 @@ namespace Tech.DataAccess.Migrations
                             CategoryId = 2,
                             Description = "Gaming laptop with great performance.",
                             GPU = "NVIDIA GTX 1650",
-                            ImageUrl = "",
                             Name = "HP Pavilion Gaming",
                             Price = 999.99m,
                             Processor = "Intel i5",
@@ -405,7 +427,6 @@ namespace Tech.DataAccess.Migrations
                             CategoryId = 1,
                             Description = "Thin, light, and powerful MacBook.",
                             GPU = "Integrated",
-                            ImageUrl = "",
                             Name = "MacBook Air 13",
                             Price = 999.99m,
                             Processor = "M1 Chip",
@@ -421,7 +442,6 @@ namespace Tech.DataAccess.Migrations
                             CategoryId = 1,
                             Description = "2-in-1 laptop with a sleek design.",
                             GPU = "Intel UHD Graphics 620",
-                            ImageUrl = "",
                             Name = "Lenovo Yoga 730",
                             Price = 1099.99m,
                             Processor = "Intel i7",
@@ -436,7 +456,6 @@ namespace Tech.DataAccess.Migrations
                             Brand = "Corsair",
                             CategoryId = 3,
                             Description = "High-precision gaming mouse.",
-                            ImageUrl = "",
                             Name = "Corsair Gaming Mouse",
                             Price = 49.99m,
                             RAM = 0,
@@ -529,6 +548,17 @@ namespace Tech.DataAccess.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Tech.Models.Models.ProductImage", b =>
+                {
+                    b.HasOne("TechProject.Models.Product", "Product")
+                        .WithMany("ProductImages")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("TechProject.Models.Product", b =>
                 {
                     b.HasOne("TechProject.Models.Category", "Category")
@@ -543,6 +573,11 @@ namespace Tech.DataAccess.Migrations
             modelBuilder.Entity("TechProject.Models.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("TechProject.Models.Product", b =>
+                {
+                    b.Navigation("ProductImages");
                 });
 #pragma warning restore 612, 618
         }

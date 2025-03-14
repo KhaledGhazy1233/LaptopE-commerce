@@ -35,10 +35,12 @@ namespace TechProject.Areas.Customer.Controllers
             }
             var userId = _userManager.GetUserId(User);
             var cartItem = _unitOfWork.Cart.Get(c => c.UserId == userId && c.ProductId == productId);
+            var productPrice = _unitOfWork.Product.Get(c => c.Id == productId).Price;
 
             if (cartItem != null)
             {
                 cartItem.Quantity += quantity;
+                cartItem.TotalPrice = productPrice * cartItem.Quantity;
                 _unitOfWork.Cart.Update(cartItem);
             }
             else
@@ -47,7 +49,8 @@ namespace TechProject.Areas.Customer.Controllers
                 {
                     UserId = userId,
                     ProductId = productId,
-                    Quantity = quantity
+                    Quantity = quantity,
+                    TotalPrice = productPrice * quantity
                 });
             }
 
@@ -59,9 +62,11 @@ namespace TechProject.Areas.Customer.Controllers
         public IActionResult UpdateQuantity(int cartId, int quantity)
         {
             var cartItem = _unitOfWork.Cart.Get(c => c.Id == cartId);
+            var productPrice = _unitOfWork.Product.Get(c => c.Id == cartItem.ProductId).Price;
             if (cartItem != null && quantity > 0)
             {
                 cartItem.Quantity = quantity;
+                cartItem.TotalPrice = productPrice * cartItem.Quantity;
                 _unitOfWork.Cart.Update(cartItem);
                 _unitOfWork.Save();
             }
@@ -78,19 +83,24 @@ namespace TechProject.Areas.Customer.Controllers
             }
             return RedirectToAction("Index");
         }
+        public IActionResult OrderConfirmation(List<Cart> cartItems)
+        {
+           
 
+            return View(cartItems);
+        }
         public IActionResult Checkout()
         {
             var userId = _userManager.GetUserId(User);
-            var cartItems = _unitOfWork.Cart.GetAll().Where(c => c.UserId == userId).ToList();
+            var cartItems = _unitOfWork.Cart.GetAll(c => c.UserId == userId, includeProperties: "Product").ToList();
 
             if (!cartItems.Any())
             {
                 return RedirectToAction("Index");
             }
-
+            ViewBag.totalPrice = cartItems.Sum(item => item.TotalPrice);
             // TODO: Process payment & create an order
-            return View("OrderConfirmation");
+            return View("OrderConfirmation", cartItems);
         }
 
         public IActionResult GetCartCount()

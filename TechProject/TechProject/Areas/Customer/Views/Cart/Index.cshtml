@@ -34,13 +34,13 @@
                         <tr>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="@item.Product.ImageUrl" alt="@item.Product.Name" width="50" class="me-2 rounded">
+                                     <img src="@item.Product.headerImageUrl" alt="@item.Product.Name" width="50" class="me-2 rounded"> 
                                     <strong>@item.Product.Name</strong>
                                 </div>
                             </td>
                             <td>@item.Product.Price.ToString("C")</td>
                             <td>@item.Quantity</td>
-                            <td>@(item.Product.Price * item.Quantity)</td>
+                            <td>@(item.TotalPrice)</td>
                             <td>
                                 <div class="d-flex justify-content-center">
                                     <a asp-area="Customer" asp-controller="Cart" asp-action="RemoveFromCart" asp-route-cartId="@item.Id"
