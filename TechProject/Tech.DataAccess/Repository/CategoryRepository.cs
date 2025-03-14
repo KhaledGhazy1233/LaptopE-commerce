@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Tech.DataAccess.Repository.IRepository;
 using TechProject.DataAccess.Data;
 using TechProject.Models;
+
 using Microsoft.EntityFrameworkCore;
 namespace Tech.DataAccess.Repository
 {

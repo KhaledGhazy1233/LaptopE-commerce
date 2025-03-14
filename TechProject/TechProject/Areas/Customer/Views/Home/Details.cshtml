@@ -1,10 +1,11 @@
-﻿@model Product
-
+﻿@model ShoppingCart
+<form method="post">
+ <input type="hidden" asp-for="ProductId">
 <div class="container mt-3">
     <div class="card shadow border-0">
         <div class="card-header bg-secondary bg-gradient text-white text-center">
-            <h2>@Model.Name</h2>
-            <h5 class="text-light">by @Model.Brand</h5>
+            <h2>@Model.Product.Name</h2>
+            <h5 class="text-light">by @Model.Product.Brand</h5>
         </div>
         <div class="card-body p-4">
             <a asp-action="Index" class="btn btn-outline-secondary mb-3">Back to Home</a>
@@ -12,19 +13,19 @@
             <div class="row">
                 <!-- Product Image -->
                 <div class="col-md-4 text-center">
-                    <img src="@Model.ImageUrl" alt="Product Image" class="img-fluid rounded shadow">
+                    <img src="@Model.Product.ImageUrl" alt="Product Image" class="img-fluid rounded shadow">
                 </div>
 
                 <!-- Product Details -->
                 <div class="col-md-8">
                     @* <span class="badge bg-warning text-dark mb-2">@Model.Category.Name</span> *@
 
-                    <p><strong>Processor:</strong> @Model.Processor</p>
-                    <p><strong>RAM:</strong> @Model.RAM GB</p>
-                    <p><strong>Storage:</strong> @Model.Storage</p>
-                    <p><strong>GPU:</strong> @Model.GPU</p>
-                    <p><strong>Screen:</strong> @Model.ScreenSize" @Model.Resolution</p>
-                    <p><strong>Price:</strong> @Model.ScreenSize" @Model.Price</p>
+                    <p><strong>Processor:</strong> @Model.Product.Processor</p>
+                    <p><strong>RAM:</strong> @Model.Product.RAM GB</p>
+                    <p><strong>Storage:</strong> @Model.Product.Storage</p>
+                    <p><strong>GPU:</strong> @Model.Product.GPU</p>
+                    <p><strong>Screen:</strong> @Model.Product.ScreenSize" @Model.Product.Resolution</p>
+                    <p><strong>Price:</strong> @Model.Product.ScreenSize" @Model.Product.Price</p>
 
              @*        <table class="table">
                         <thead>
@@ -45,19 +46,20 @@
                         </tbody>
                     </table> *@
 
-                    <p class="text-muted">@Model.Description</p>
+                    <p class="text-muted">@Model.Product.Description</p>
 
                     <div class="d-flex">
-                        <label for="count" class="me-2">Count</label>
-                        <input type="number" id="count" class="form-control w-25" value="1" min="1">
+                        <label asp-for="count" class="me-2">Count</label>
+                        <input asp-for="count" type="number" id="count" class="form-control w-25" min="1">
                     </div>
+                    <span asp-validation-for="count" class="text-danger"></span>
 
-                    <button class="btn btn-dark mt-3 w-100" disabled>ADD TO CART (COMING SOON...)</button>
+                        <button type="submit" class="btn btn-dark mt-3 w-100">ADD TO CART</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+</form>
 <!-- Bootstrap Styles -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
