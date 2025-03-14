@@ -14,11 +14,13 @@ namespace Tech.DataAccess.Repository
         private ApplicationDbContext ? _db;
         public ICategoryRepository? Category { get; private set; }
         public IProductRepository ? Product { get; set; }
+        public ICartRepository? Cart { get; private set; }
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             Category= new CategoryRepository(_db);
             Product= new ProductRepository(_db);
+            Cart = new CartRepository(_db);
         }
         public void Save()
         {

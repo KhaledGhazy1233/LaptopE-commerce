@@ -176,14 +176,7 @@ namespace TechProject.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        if(User.IsInRole(SD.Role_User_Admin))
-                        {
-                            TempData["success"] = "UserRegisterSucessfully";
-                        }
-                        else
-                        {
                         await _signInManager.SignInAsync(user, isPersistent: false);
-                        }
                         return LocalRedirect(returnUrl);
                     }
                 }
