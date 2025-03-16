@@ -1,5 +1,42 @@
 ﻿@model ProductVM
+<style>
+    .image-container {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        border: 2px solid transparent;
+        transition: border 0.3s ease-in-out;
+    }
 
+    .preview-image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .image-container .action-buttons {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        display: none;
+        gap: 5px;
+    }
+
+    .image-container:hover .action-buttons {
+        display: flex;
+    }
+
+    .header-selected {
+        border: 3px solid #007bff !important;
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+        border-radius: 5px;
+    }
+
+
+
+</style>
 <div class="card shadow border-0 mt-4">
     <div class="card-header bg-secondary bg-gradient ml-0 py-3">
         <div class="row">
@@ -12,10 +49,10 @@
     </div>
     <div class="card-body p-4">
         <form method="post" class="row" enctype="multipart/form-data">
-             <div class="row">
-                 <div class="col-10">
+            <div class="row">
+                <div class="col-10">
                     <div class="border p-3">
-                        @*<div asp-validation-summary="ModelOnly"></div>*@
+                        <div asp-validation-summary="All" class="text-danger"></div>
                         <input type="hidden" asp-for="product.Id" />
                         <div class="form-floating py-2 col-12">
                             <input asp-for="product.Name" class="form-control border-0 shadow" />
@@ -75,13 +112,21 @@
                             <label asp-for="product.Price" class="ms-2"></label>
                             <span asp-validation-for="product.Price" class="text-danger"></span>
                         </div>
+                        <div class="row">
 
+                        </div>
                         <div class="form-floating py-2 col-12">
-                            <input type="file" name="file" class="form-control border-0 shadow" />
-                            <label asp-for="product.ImageUrl" class="ms-2"></label>
+                            <input type="file" asp-for="Files" class="form-control border-0 shadow" id="imageInput" multiple />
+                            <label asp-for="product.ProductImages" class="ms-2"></label>
                         </div>
 
-                      @*   @if (!string.IsNullOrEmpty(Model.product.ImageUrl))
+                      <input type="hidden" id="headerImageUrlInput" name="product.headerImageUrl" value="@Model.product.headerImageUrl" />
+
+
+
+
+
+                        @*   @if (!string.IsNullOrEmpty(Model.product.ImageUrl))
                         {
                             <div class="py-2 col-12 text-center">
                                 <img src="@Model.product.ImageUrl" alt="Product Image" width="150" height="150" class="border" />
@@ -98,7 +143,7 @@
 
                         <div class="row pt-2">
                             <div class="col-6 col-md-3">
-                                <button type="submit" class="btn btn-secondary form-control">
+                                <button type="submit" class="btn btn-primary form-control">
                                     @(Model.product.Id != 0 ? "Update" : "Create")
                                 </button>
                             </div>
@@ -109,29 +154,66 @@
                             </div>
                         </div>
                     </div>
-                 </div>
+                </div>
+                @* <div class="col-2">   *@
+                @*        @if (!string.IsNullOrEmpty(Model.product.ImageUrl))   *@
+                @*      {    *@
+                @*            <div class="border p-1 m-2 text-center">   *@
+                @*                        <img src="@Model.product.ImageUrl" width="100%"   *@
+                @*                             style="border-radius:5px; border:1px solid #bbb9b9" />    *@
+                @*               @*     <a asp-action="DeleteImage" class="btn btn-danger" asp-route-imageId="@image.Id">    *@
+                @*                       <i class="bi bi-trash-fill"></i> Delete    *@
+                @*                   </a>  *@  
+                @*                    </div>    *@
+                @*       }    *@
+                @*   </div> *@
                 <div class="col-2">
                     
-                    @if (!string.IsNullOrEmpty(Model.product.ImageUrl))
-                    
-                    {       
-                    <div class="border p-1 m-2 text-center">
-                                <img src="@Model.product.ImageUrl" width="100%"
-                                     style="border-radius:5px; border:1px solid #bbb9b9" />
-                            @*     <a asp-action="DeleteImage" class="btn btn-danger" asp-route-imageId="@image.Id">
-                                    <i class="bi bi-trash-fill"></i> Delete
-                                </a> *@
+                   <h4>unsaved images</h4>
+                    <!-- عرض الصور الجديدة -->
+                    <div id="unsavedImages" class="d-flex flex-wrap gap-2"></div>
+                    <br></br>
+
+                    <h4>saved images</h4>
+                    <!-- عرض الصور المحفوظة -->
+                    <div id="savedImages" class="d-flex flex-wrap gap-2">
+                        @foreach (var image in Model.product.ProductImages)
+                        {
+                            <div class="image-container @(Model.product.headerImageUrl == image.ImageUrl ? "header-selected" : "")">
+                                <img src="@image.ImageUrl" class="border img-thumbnail preview-image" />
+                                <div class="action-buttons">
+                                    <button type="button" class="btn btn-danger btn-sm delete-saved-image" data-id="@image.Id">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary btn-sm select-header-image" data-url="@image.ImageUrl">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </button>
+                                </div>
                             </div>
-                    }
+                        }
+                    </div>
+
+                    <!-- إدخال الصورة الرئيسية -->
+                    <input type="hidden" id="headerImageUrlInput" name="product.headerImageUrl" value="@Model.product.headerImageUrl" />
                 </div>
+
+
+
+
+                
              </div>
         </form>
     </div>
 </div>
-
+@* <!-- Fullscreen Overlay --> *@
+@* <div id="fullscreenOverlay" class="fullscreen-overlay"> *@
+@*     <span id="closeFullscreen" class="close-btn">&times;</span> *@
+@*     <img id="fullscreenImage" class="fullscreen-image" src="" alt="Expanded Image"> *@
+@* </div> *@
 @section Scripts {
     <script src="https://cdn.tiny.cloud/1/4ny9b7htrdk8qhxba71qqzg9uf3a7bkv8ykvkwp2oczlpxdx/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-
+	<script src="~/js/imagepreviewt.js"></script>
+	<link href="~/css/imagepreview.css" rel="stylesheet" />
     <script>
         tinymce.init({
             selector: 'textarea',
@@ -143,4 +225,8 @@
     @{
         <partial name="_ValidationScriptsPartial" />
     }
+	<script src="~/js/images.js"></script>
 }
+
+
+

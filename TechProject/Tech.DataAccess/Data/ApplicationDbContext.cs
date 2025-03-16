@@ -13,6 +13,11 @@ namespace TechProject.DataAccess.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ProductImage>()
+           .HasOne(p => p.Product)
+           .WithMany(p => p.ProductImages)
+           .HasForeignKey(p => p.ProductId);
+
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Category>().HasData(
                 new Category { Id = 1, Name = "Laptops", Description = "Various types of laptops" },
@@ -35,8 +40,8 @@ namespace TechProject.DataAccess.Data
           ScreenSize = 15.6m,
           Resolution = "1920x1080",
           Price = 799.99m,
-          Description = "A reliable laptop for everyday use.",
-          ImageUrl = ""
+          Description = "A reliable laptop for everyday use."
+          
       },
       new Product
       {
@@ -51,8 +56,8 @@ namespace TechProject.DataAccess.Data
           ScreenSize = 15.6m,
           Resolution = "1920x1080",
           Price = 999.99m,
-          Description = "Gaming laptop with great performance.",
-          ImageUrl = ""
+          Description = "Gaming laptop with great performance."
+         
       },
       new Product
       {
@@ -67,8 +72,8 @@ namespace TechProject.DataAccess.Data
           ScreenSize = 13.3m,
           Resolution = "2560x1600",
           Price = 999.99m,
-          Description = "Thin, light, and powerful MacBook.",
-          ImageUrl = ""
+          Description = "Thin, light, and powerful MacBook."
+         
       },
       new Product
       {
@@ -83,8 +88,8 @@ namespace TechProject.DataAccess.Data
           ScreenSize = 13.3m,
           Resolution = "1920x1080",
           Price = 1099.99m,
-          Description = "2-in-1 laptop with a sleek design.",
-          ImageUrl = ""
+          Description = "2-in-1 laptop with a sleek design."
+         
       },
       new Product
       {
@@ -99,8 +104,8 @@ namespace TechProject.DataAccess.Data
           ScreenSize = 0,
           Resolution = null,
           Price = 49.99m,
-          Description = "High-precision gaming mouse.",
-          ImageUrl = ""
+          Description = "High-precision gaming mouse."
+          
       }
          );
         }
@@ -109,6 +114,8 @@ namespace TechProject.DataAccess.Data
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

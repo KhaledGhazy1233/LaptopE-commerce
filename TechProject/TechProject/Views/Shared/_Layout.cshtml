@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - TechProject</title>
-
+    <link rel="icon" type="image/png" href="">
     <!-- Bootstrap 5 -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
@@ -54,20 +54,23 @@
                         </li>
                         @if (User.IsInRole(SD.Role_User_Admin))
                         {
-                        <li class="nav-item dropdown">
+                        @* <li class="nav-item dropdown"> *@
                            
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                                Dropdown
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a>
-                                <a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a>
-                                <hr>
-                                    <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create Privilege</a>
-                            </div>
-                        </li>
+                        @*     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"> *@
+                        @*         Dropdown *@
+                        @*     </a> *@
+                        @*     <div class="dropdown-menu"> *@
+                        @*         <a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a> *@
+                        @*         <a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a> *@
+                        @*     </div> *@
+                        @* </li> *@
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="admin" asp-controller="Dashboard" asp-action="index">Dashboard</a>
+                            </li>
                         }
+                       
                     </ul>
+
                     <partial name="_LoginPartial" />
                 </div>
             </div>
@@ -88,5 +91,17 @@
     </footer>
 
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        function updateCartCount() {
+            $.get("/Customer/Cart/GetCartCount", function (data) {
+                $("#cart-count").text(data);
+            });
+        }
+
+        $(document).ready(function () {
+            updateCartCount();  
+        });
+    </script>
+
 </body>
 </html>

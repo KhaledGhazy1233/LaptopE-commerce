@@ -23,12 +23,23 @@ namespace TechProject.Areas.Customer.Controllers
 
         public IActionResult Details(int id)
         {
-            var product = _unitofwork.Product.Get(p=>p.Id == id);
+            var product = _unitofwork.Product
+                .GetAll(p => p.Id == id, "ProductImages,Category")
+                .FirstOrDefault();
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
             return View(product);
         }
         public IActionResult Index()
         {
-            var ProductList = _db.Products.Include(p=>p.Category).ToList();
+            var ProductList = _unitofwork.Product
+                .GetAll(null, "Category,ProductImages") 
+                .ToList();
+
             return View(ProductList);
         }
 
