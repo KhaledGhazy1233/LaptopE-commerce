@@ -139,26 +139,17 @@ namespace TechProject.Areas.Admin.Controllers
                 }
             }
 
-            // **تحديد الصورة الافتراضية (Header Image)**
+           
             var productImages = _unitofwork.Product
                 .GetAll(p => p.Id == productVM.product.Id, "ProductImages")
                 .FirstOrDefault()?.ProductImages
                 .Select(img => img.ImageUrl)
                 .ToList();
 
-            if (string.IsNullOrEmpty(productVM.product.headerImageUrl))
+            if (string.IsNullOrEmpty(productVM.product.headerImageUrl) && productImages.Count > 0)
             {
-                if (productImages.Count > 0)
-                {
-                    // اختر أول صورة كـ Header Image إذا لم يتم تحديدها
                     productVM.product.headerImageUrl = productImages.First();
-                }
-                else
-                {
-                    // لا يوجد صور، أعطِ المستخدم رسالة خطأ ليختار واحدة
-                    ModelState.AddModelError("HeaderImageUrl", "يرجى اختيار صورة رئيسية للمنتج.");
-                    return View(productVM);
-                }
+               
             }
 
             _unitofwork.Save();

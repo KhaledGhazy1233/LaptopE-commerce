@@ -10,7 +10,7 @@ namespace Tech.DataAccess.Repository.IRepository
     {
         ICategoryRepository Category { get; }
         IProductRepository Product { get; }
-        ICartRepository Cart { get; }
+        IShoppingCartRepository ShoppingCart { get; }
         void Save();
     }
 }

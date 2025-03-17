@@ -5,8 +5,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace Tech.Models.Models
+using TechProject.Models;
+namespace TechProject.Models
 {
     public class ApplicationUser :IdentityUser
     {

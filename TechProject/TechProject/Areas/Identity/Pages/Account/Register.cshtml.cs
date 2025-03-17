@@ -22,6 +22,7 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using Tech.Models.Models;
 using Tech.Utility;
+using TechProject.Models;
 
 namespace TechProject.Areas.Identity.Pages.Account
 {
@@ -150,12 +151,12 @@ namespace TechProject.Areas.Identity.Pages.Account
                     _logger.LogInformation("User created a new account with password.");
 
                     if (!string.IsNullOrEmpty(Input.Role))
-                    { 
+                    {
                         await _userManager.AddToRoleAsync(user, Input.Role);
                     }
                     else
                     {
-                        await _userManager.AddToRoleAsync(user,SD.Role_User_Customer);
+                        await _userManager.AddToRoleAsync(user, SD.Role_User_Customer);
                     }
 
                     var userId = await _userManager.GetUserIdAsync(user);
@@ -176,7 +177,14 @@ namespace TechProject.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        if (User.IsInRole(SD.Role_User_Admin))
+                        {
+                            TempData["success"] = "UserRegisterSucessfully";
+                        }
+                        else
+                        {
+                            await _signInManager.SignInAsync(user, isPersistent: false);
+                        }
                         return LocalRedirect(returnUrl);
                     }
                 }
@@ -186,7 +194,6 @@ namespace TechProject.Areas.Identity.Pages.Account
                 }
             }
 
-            // If we got this far, something failed, redisplay form
             return Page();
         }
 
