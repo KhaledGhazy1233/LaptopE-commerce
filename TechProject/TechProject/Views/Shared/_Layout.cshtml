@@ -93,7 +93,7 @@
     @await RenderSectionAsync("Scripts", required: false)
     <script>
         function updateCartCount() {
-            $.get("/Customer/Cart/GetCartCount", function (data) {
+            $.get("/Customer/Home/GetCartCount", function (data) {
                 $("#cart-count").text(data);
             });
         }

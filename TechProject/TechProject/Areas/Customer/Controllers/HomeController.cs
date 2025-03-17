@@ -33,6 +33,9 @@ namespace TechProject.Areas.Customer.Controllers
             }
 
             return View(product);
+
+
+
         }
         public IActionResult Index()
         {
