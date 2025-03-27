@@ -35,6 +35,7 @@ namespace TechProject.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+      
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
@@ -42,7 +43,8 @@ namespace TechProject.Areas.Identity.Pages.Account
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender
+           )
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -51,6 +53,7 @@ namespace TechProject.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+           
         }
 
         /// <summary>
@@ -64,6 +67,11 @@ namespace TechProject.Areas.Identity.Pages.Account
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
+        /// 
+
+        ///
+        public List<SelectListItem> RoleList { get; set; }
+        public List<SelectListItem> CountryList { get; set; }
         public string ReturnUrl { get; set; }
 
         /// <summary>
@@ -106,8 +114,42 @@ namespace TechProject.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
             public string Role { get; set; }
-            [ValidateNever]
-            public  IEnumerable<SelectListItem>RoleList { get; set; }
+
+
+          //applicaionuser
+            [Required]
+            [Display(Name = "Country")]
+            public string Country { get; set; }
+            [Required]
+            [Display(Name = "City")]
+            public string City { get; set; }
+            [Display(Name = "Street")]
+            public string Street { get; set; }
+            [Required]
+            [Range(1900, 2100, ErrorMessage = "Please enter a valid year")]
+            public int BirthYear { get; set; }
+
+            [Required]
+            [Range(1, 12, ErrorMessage = "Please enter a valid month")]
+            public int BirthMonth { get; set; }
+
+            [Required]
+            public int BirthDay { get; set; }
+            [Required]
+            public string FirstName { get; set; }
+            [Required]
+            public string LastName { get; set; }
+            public string Gender { get; set; }
+            [Required(ErrorMessage = "Country Code is required.")]
+            public string CountryCode { get; set; } // Stores the selected country code
+
+            [Required(ErrorMessage = "Phone Number is required.")]
+            [RegularExpression(@"^\d{6,15}$", ErrorMessage = "Invalid phone number format.")]
+            public string PhoneNumber { get; set; }
+
+            public string FullPhoneNumber => $"{CountryCode}{PhoneNumber}";
+            public string UserName => $"{FirstName}{LastName}";
+
         }
 
 
@@ -115,21 +157,32 @@ namespace TechProject.Areas.Identity.Pages.Account
         {
             if (!await _roleManager.RoleExistsAsync(SD.Role_User_Customer))
             {
-               await _roleManager.CreateAsync(new IdentityRole(SD.Role_User_Customer));
-               await _roleManager.CreateAsync(new IdentityRole(SD.Role_User_Admin));
-               await _roleManager.CreateAsync(new IdentityRole(SD.Role_User_Employee));
-               
-            
+                await _roleManager.CreateAsync(new IdentityRole(SD.Role_User_Customer));
+                await _roleManager.CreateAsync(new IdentityRole(SD.Role_User_Admin));
+                await _roleManager.CreateAsync(new IdentityRole(SD.Role_User_Employee));
+
+
             }
-            Input = new()
-            { 
-                 RoleList =_roleManager.Roles.Select(x=>x.Name).Select(i=> new SelectListItem
-                 {
-                     Text = i ,
-                     Value = i
-                 })
-            };
-            
+            CountryList = new List<SelectListItem>
+    {
+        new SelectListItem { Value = "US", Text = "United States" },
+        new SelectListItem { Value = "UK", Text = "United Kingdom" },
+        new SelectListItem { Value = "EG", Text = "Egypt" },
+        new SelectListItem { Value = "SA", Text = "Saudi Arabia" },
+        new SelectListItem { Value = "AE", Text = "United Arab Emirates" },
+        new SelectListItem { Value = "FR", Text = "France" },
+        new SelectListItem { Value = "DE", Text = "Germany" },
+        new SelectListItem { Value = "IN", Text = "India" }
+    };
+            if (User.IsInRole(SD.Role_User_Admin))
+            {
+                RoleList = _roleManager.Roles.Select(r => new SelectListItem
+                {
+                    Value = r.Name,
+                    Text = r.Name
+                }).ToList();
+            }
+
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
@@ -138,11 +191,12 @@ namespace TechProject.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            var x = Input;
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
 
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
@@ -150,14 +204,12 @@ namespace TechProject.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    if (!string.IsNullOrEmpty(Input.Role))
-                    {
-                        await _userManager.AddToRoleAsync(user, Input.Role);
-                    }
-                    else
-                    {
-                        await _userManager.AddToRoleAsync(user, SD.Role_User_Customer);
-                    }
+                    // ✅ Assign role based on who is registering the user
+                    var assignedRole = (!string.IsNullOrEmpty(Input.Role) &&
+                       User.IsInRole(SD.Role_User_Admin))
+                        ? Input.Role : SD.Role_User_Customer;
+
+                    await _userManager.AddToRoleAsync(user, assignedRole);
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -171,23 +223,26 @@ namespace TechProject.Areas.Identity.Pages.Account
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
+                    TempData["Success"] = "User registered successfully!";
+
+
+                    if (User.IsInRole(SD.Role_User_Admin))
+                    {
+                        return RedirectToAction("Index", "UserManagement", new { area = "Admin" });
+                    }
+
+
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
                     }
                     else
                     {
-                        if (User.IsInRole(SD.Role_User_Admin))
-                        {
-                            TempData["success"] = "UserRegisterSucessfully";
-                        }
-                        else
-                        {
-                            await _signInManager.SignInAsync(user, isPersistent: false);
-                        }
+                        await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);
                     }
                 }
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
@@ -197,19 +252,35 @@ namespace TechProject.Areas.Identity.Pages.Account
             return Page();
         }
 
+
         private ApplicationUser CreateUser()
         {
             try
             {
-                return Activator.CreateInstance<ApplicationUser>();
+                return new ApplicationUser
+                {
+                    UserName = Input.UserName,  
+                    Email = Input.Email,    
+                    FirstName = Input.FirstName,
+                    LastName = Input.LastName,
+                    City = Input.City,
+                    Country = Input.Country,
+                    Street = Input.Street,
+                    Gender = Input.Gender,
+                    BirthDate = new DateTime(Input.BirthYear, Input.BirthMonth, Input.BirthDay),
+                    PhoneNumber = Input.FullPhoneNumber
+                    
+                };
             }
             catch
             {
-                throw new InvalidOperationException($"Can't create an instance of '{nameof(IdentityUser)}'. " +
-                    $"Ensure that '{nameof(IdentityUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
+                throw new InvalidOperationException($"Can't create an instance of '{nameof(ApplicationUser)}'. " +
+                    $"Ensure that '{nameof(ApplicationUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
                     $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
             }
         }
+
+
 
         private IUserEmailStore<IdentityUser> GetEmailStore()
         {

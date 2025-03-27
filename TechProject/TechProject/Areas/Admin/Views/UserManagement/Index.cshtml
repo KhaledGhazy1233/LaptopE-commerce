@@ -1,0 +1,93 @@
+﻿@model IEnumerable<IdentityUser>
+
+@{
+    ViewData["Title"] = "User Management";
+    var roles = ViewData["Roles"] as List<string>;
+    var selectedRole = ViewData["SelectedRole"] as string;
+    var searchTerm = ViewData["SearchTerm"] as string;
+    var index = 1;
+}
+
+
+
+
+<div class="d-flex justify-content-around align-items-center mb-3">
+    
+    <div class="d-flex gap-2">
+        <a asp-action="Index" class="role-btn @(string.IsNullOrEmpty(selectedRole) ? "active" : "")">
+            All Users
+        </a>
+
+        @if (roles != null)
+        {
+            @foreach (var role in roles)
+            {
+                <a asp-action="Index" asp-route-roleFilter="@role"
+                   class="role-btn @(selectedRole == role ? "active" : "")">
+                    @(role.ToString() + 's')
+                </a>
+            }
+        }
+    </div>
+
+    <form method="get" class="d-flex w-50">
+        <input type="text" name="searchTerm" class="form-control me-2" placeholder="Search by email or username"
+               value="@searchTerm" />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <a class="btn btn-success" id="register"
+       asp-area="Identity"
+       asp-page="/Account/Register">
+        Add New User
+    </a>
+</div>
+
+
+
+<!-- Users Table -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>NO.</th>
+            <th class="text-start">Email</th>
+            <th class="text-start">UserName</th>
+            <th class="text-end">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@(index++)</td>
+                <td >@user.Email</td>
+                <td>@user.UserName</td>
+                <td class="text-right">
+                    <a class="btn btn-primary" asp-action="ManageRoles" asp-area="Admin" asp-route-userId="@user.Id">Manage Roles</a>
+                    
+                </td>
+               
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Custom Styles -->
+<style>
+    .role-btn {
+        text-decoration: none;
+        color: black;
+        padding: 8px 16px;
+        border-radius: 20px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+        .role-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        .role-btn.active {
+            background-color: #007bff;
+            color: white;
+        }
+</style>

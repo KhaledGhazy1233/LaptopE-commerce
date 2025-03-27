@@ -17,5 +17,15 @@ namespace TechProject.Models
 
         public string ? State { get; set; }
         public string ?PostalCode { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? BirthDate { get; set; }
+        public string? FirstName { get; set; }
+      
+        public string? LastName { get; set; }
+        public string? Gender { get; set; }
+ 
+       
+        public string? Country { get; set; }
+        public string? Street { get; set; }
     }
 }

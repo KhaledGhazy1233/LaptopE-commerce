@@ -15,12 +15,16 @@ namespace Tech.DataAccess.Repository
         public ICategoryRepository? Category { get; private set; }
         public IProductRepository ? Product { get; set; }
         public IShoppingCartRepository ShoppingCart { get; set; }
+
+        public IApplicationUserRepository ApplicationUser { get; set; }
+
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             Category= new CategoryRepository(_db);
             Product= new ProductRepository(_db);
             ShoppingCart = new ShoppingCartRepository(_db);
+            ApplicationUser = new ApplicationUserRepository(_db);
         }
         public void Save()
         {
