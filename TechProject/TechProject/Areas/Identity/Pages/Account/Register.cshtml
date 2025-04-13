@@ -1,99 +1,162 @@
 ﻿@page
 @model RegisterModel
-<div class="card shadow border-0 mt-4">
-    <div class="card-header bg-secondary bg-gradient m-lg-0 py-4">
-        <div class="row">
-            <div class="col-12 text-center">
-                @if (User.IsInRole(SD.Role_User_Admin))
-                {
-                    <h2 class="py-2 text-white">Register Admin-Controll</h2>
-                }
-                else
-                {
-                    <h2 class="py-2 text-white">Register</h2>
-                }
-            </div>
-        </div>
-    </div>
-    <div class="card-body p-4">
-        <div class="row pt-3">
-            <div class="col-md-12">
-                <form id="registerForm" class="row" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                    <h3 class="border-bottom pb-3 mb-4 text-secondary text-center">Create a new account.</h3>
-                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-                    <div class="form-floating mb-3 col-md-12">
-                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                        <label asp-for="Input.Email"> Email </label>
-                        <span asp-validation-for="Input.Email" class="text-danger"></span>
-                    </div>
-                    <div class="form-floating mb-3 col-md-6">
-                        <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                        <label asp-for="Input.Password"> Password </label>
-                        <span asp-validation-for="Input.Password" class="text-danger"></span>
-                    </div>
-                    <div class="form-floating mb-3 col-md-6">
-                        <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                        <label asp-for="Input.ConfirmPassword"> Confirm Password </label>
-                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-                    </div>
-                    @if (User.IsInRole(SD.Role_User_Admin))
-                    {
-                        <div class="form-floating mb-3">
-                            <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select">
-                                <option disabled selected>--Select Role--</option>
-                            </select>
-                        </div>
-                    }
-                    <div class="col-12">
-                        <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-secondary">Register</button>
-                    </div>
-                </form>
-            </div>
-            @if (!User.IsInRole(SD.Role_User_Admin))
-            {
-                <div class="col-md-12 p-3 text-center">
-                    <section>
-                        <div class="d-flex align-items-center my-4">
-                            <hr class="flex-grow-1">
-                            <span class="mx-2 text-muted">OR</span>
-                            <hr class="flex-grow-1">
-                        </div>
-                        <h3>Use another service to register.</h3>
-                        @{
-                            if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                            {
-                                <div>
-                                    <p>
-                                        There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">
-                                            article
-                                            about setting up this ASP.NET application to support logging in via external services
-                                        </a>.
-                                    </p>
-                                </div>
-                            }
-                            else
-                            {
-                                <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                                    <div>
-                                        <p>
-                                            @foreach (var provider in Model.ExternalLogins!)
-                                            {
-                                                <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                            }
-                                        </p>
+
+<section class="h-100 w-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-10">
+                <div class="card shadow-lg" style="border-radius: 15px;">
+                    <div class="card-body p-4">
+                        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                            <div class="row g-4">
+                                <!-- Left Side -->
+                                <div class="col-lg-6">
+                                    <h3 class="fw-bold text-primary mb-4">General Information</h3>
+
+                                    <div class="mb-3">
+                                        <label asp-for="Input.FirstName" class="form-label">First Name</label>
+                                        <input asp-for="Input.FirstName" class="form-control" />
+                                        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
                                     </div>
-                                </form>
-                            }
-                        }
-                    </section>
+
+                                    <div class="mb-3">
+                                        <label asp-for="Input.LastName" class="form-label">Last Name</label>
+                                        <input asp-for="Input.LastName" class="form-control" />
+                                        <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                                    </div>
+
+                                  
+                                    <div class="mb-3">
+                                        <label asp-for="Input.Gender" class="form-label">Gender</label><br>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" asp-for="Input.Gender" value="Female" required>
+                                            <label class="form-check-label">Female</label>
+                                        </div>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" asp-for="Input.Gender" value="Male" required>
+                                            <label class="form-check-label">Male</label>
+                                        </div>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" asp-for="Input.Gender" value="Other" required>
+                                            <label class="form-check-label">Other</label>
+                                        </div>
+
+                                        <span asp-validation-for="Input.Gender" class="text-danger"></span>
+                                    </div>
+
+
+                                    <div class="row g-2">
+                                        <div class="col-md-4">
+                                            <label asp-for="Input.BirthYear" class="form-label">Year</label>
+                                            <input asp-for="Input.BirthYear" class="form-control" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label asp-for="Input.BirthMonth" class="form-label">Month</label>
+                                            <input asp-for="Input.BirthMonth" class="form-control" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label asp-for="Input.BirthDay" class="form-label">Day</label>
+                                            <input asp-for="Input.BirthDay" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    @if (User.IsInRole(SD.Role_User_Admin))
+                                    {
+                                        <div class="mt-3">
+                                            <label asp-for="Input.Role" class="form-label">Role</label>
+                                            <select asp-for="Input.Role" asp-items="@Model.RoleList" class="form-select">
+                                                <option disabled selected>--Select Role--</option>
+                                            </select>
+                                        </div>
+                                    }
+                                  
+                                </div>
+                              
+                                <!-- Right Side -->
+                                <div class="col-lg-6 bg-light p-4 rounded">
+                                    <h3 class="fw-bold text-primary mb-4">Contact Details</h3>
+
+                                    <div class="mb-3">
+                                        <label asp-for="Input.Email" class="form-label">Email</label>
+                                        <input asp-for="Input.Email" class="form-control" />
+                                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label asp-for="Input.Password" class="form-label">Password</label>
+                                        <input asp-for="Input.Password" class="form-control" type="password" />
+                                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label asp-for="Input.ConfirmPassword" class="form-label">Confirm Password</label>
+                                        <input asp-for="Input.ConfirmPassword" class="form-control" type="password" />
+                                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="row g-2">
+                                        <div class="col-md-4">
+                                            <label asp-for="Input.Country" class="form-label">Country</label>
+                                            <select asp-for="Input.Country" asp-items="@Model.CountryList" class="form-select">
+                                                <option disabled selected>--Select Country--</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label asp-for="Input.City" class="form-label">City</label>
+                                            <input asp-for="Input.City" class="form-control" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label asp-for="Input.Street" class="form-label">Street</label>
+                                            <input asp-for="Input.Street" class="form-control" />
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row g-2">
+                                        <div class="col-md-5">
+                                            <label class="form-label">Country Code</label>
+                                            <select asp-for="Input.CountryCode" class="form-select" required>
+                                                <option value="+1">+1 (USA)</option>
+                                                <option value="+44">+44 (UK)</option>
+                                                <option value="+49">+49 (Germany)</option>
+                                                <option value="+91">+91 (India)</option>
+                                                <option value="+20">+20 (Egypt)</option>
+                                                <option value="+971">+971 (UAE)</option>
+                                               
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-7">
+                                            <label asp-for="Input.PhoneNumber" class="form-label">Phone Number</label>
+                                            <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Enter phone number" required />
+                                            <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <button id="registerSubmit" type="submit" class="btn btn-light text-primary p-2 border-primary mt-4 w-25">Register</button>
+                                </div>
+                            </div>
+
+                            
+                        </form>
+                    </div>
                 </div>
-            }
+            </div>
         </div>
     </div>
-</div>
-
-
+</section>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <style>
+      
+
+        .bg-light {
+            background-color: #679acd !important;
+        }
+    </style>
 }

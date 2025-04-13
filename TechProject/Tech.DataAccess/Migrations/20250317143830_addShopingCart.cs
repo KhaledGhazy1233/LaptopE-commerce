@@ -10,8 +10,7 @@ namespace Tech.DataAccess.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Carts");
+            
 
             migrationBuilder.CreateTable(
                 name: "ShoppingCarts",

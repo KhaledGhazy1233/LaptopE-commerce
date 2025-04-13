@@ -6,6 +6,7 @@ using TechProject.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Tech.DataAccess.Repository;
 using Tech.DataAccess.Repository.IRepository;
+using Tech.Models.ViewModels;
 namespace TechProject.Areas.Customer.Controllers
 {
     [Area("Customer")]
@@ -37,17 +38,24 @@ namespace TechProject.Areas.Customer.Controllers
 
 
         }
-        public IActionResult Index()
+        public IActionResult Index(string searchTerm ,string category)
         {
             var ProductList = _unitofwork.Product
-                .GetAll(null, "Category,ProductImages") 
-                .ToList();
-
+             .GetAll(null, "Category,ProductImages")
+             .ToList();
+           
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                ProductList = ProductList.Where(u => u.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+                             .ToList();
+            }
+            ViewData["ActivePage"] = "Home";
             return View(ProductList);
         }
 
         public IActionResult Privacy()
         {
+            ViewData["ActivePage"] = "Privacy";
             return View();
         }
 
