@@ -73,7 +73,7 @@
                                             </select>
                                         </div>
                                     }
-                                    <button id="registerSubmit" type="submit" class="btn btn-primary mt-4 w-25">Register</button>
+                                  
                                 </div>
                               
                                 <!-- Right Side -->
@@ -137,11 +137,11 @@
                                             <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
                                         </div>
                                     </div>
-
+                                    <button id="registerSubmit" type="submit" class="btn btn-light text-primary p-2 border-primary mt-4 w-25">Register</button>
                                 </div>
                             </div>
 
-                           
+                            
                         </form>
                     </div>
                 </div>
@@ -153,9 +153,7 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
     <style>
-        body {
-            background: linear-gradient(to right, rgba(161, 196, 253, 1), rgba(194, 233, 251, 1));
-        }
+      
 
         .bg-light {
             background-color: #679acd !important;

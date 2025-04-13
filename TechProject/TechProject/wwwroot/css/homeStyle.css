@@ -1,0 +1,349 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-1 {
+    display: flex;
+    justify-content: center;
+    gap: 250px;
+    align-items: center;
+    padding-top: 20px;
+    background-color: #0d0d12;
+}
+
+.logo {
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+    .logo .dot {
+        color: red;
+    }
+
+    .logo:hover {
+        color: red;
+    }
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 5px;
+    border-radius: 25px;
+    overflow: hidden;
+    border: 1px solid white;
+}
+
+/*    .search-bar select, .search-bar input {
+        border: none;
+        outline: none;
+        padding: 10px;
+        background-color: transparent;
+        color: black;
+    }*/
+
+    .search-bar form input {
+        width: 90%;
+        outline: none;
+        border: none;
+        font-weight: bold;
+    }
+
+    .search-bar form button {
+        background-color: white;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 15px;
+    transition: all 0.3s;
+    gap:0px;
+   
+}
+
+    .icon i {
+        font-size: 20px;
+        margin-bottom: 5px;
+        transition: color 0.3s;
+    }
+
+        .icon:hover, .icon i:hover {
+            color: red;
+        }
+
+
+@media ( max-width: 800px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+
+    .icons {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .icon i {
+        font-size: 18px;
+    }
+
+    .icons {
+        gap: 10px;
+    }
+}
+/* -------------------------------- */
+#nav .nav-item .stable {
+    position: relative;
+    color: #D10024;
+}
+
+    #nav .nav-item .stable::after {
+        content: '';
+        width: 100%;
+        height: 3px;
+        background-color: #D10024;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+#nav .nav-item {
+    position: relative;
+}
+
+    #nav .nav-item::after {
+        content: '';
+        width: 0%;
+        height: 3px;
+        background-color: #D10024;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transition: all 1s;
+    }
+
+    #nav .nav-item:hover::after {
+        width: 90%;
+    }
+/* ------------------------------- */
+#slider img {
+    width: 100%;
+    height: 400px;
+}
+/* -------------------------- */
+.menu-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    padding-inline: 100px;
+}
+
+    .menu-bar ul {
+        display: flex;
+        gap: 60px;
+        padding: 0;
+        margin: 0;
+    }
+
+        .menu-bar ul li a {
+            color: #9CC3E7;
+            transition: all 0.3s;
+        }
+
+            .menu-bar ul li a:hover {
+                color: #D10024;
+            }
+
+    .menu-bar .word {
+        color: #2B2D42;
+        font-size: 30px;
+        font-weight: 700;
+        font-family: sans-serif;
+    }
+
+
+
+.Products {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+
+.fixed-card-container {
+    position: relative;
+    display: inline-block;
+}
+
+.fixed-card {
+    border: 1px solid #e6e6e6;
+    width: 260px;
+    background: white;
+    overflow: hidden;
+    transition: all 0.5s;
+}
+
+    .fixed-card:hover {
+        border: 2px solid #D10024;
+    }
+
+    .fixed-card img {
+        width: 100%;
+        height: auto;
+    }
+
+.discount {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    color: #D10024;
+    padding: 2px 6px;
+    border: 1px solid #D10024;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.card-content {
+    padding: 15px;
+    text-align: center;
+}
+
+.category {
+    font-size: 12px;
+    color: gray;
+    margin-bottom: 5px;
+}
+
+.product-name {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.price {
+    color: #D10024;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: gray;
+    font-size: 14px;
+}
+
+.rating {
+    margin: 10px 0;
+    color: #D10024;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+    .rating i {
+        color: #D10024;
+        transition: all 0.5s;
+    }
+
+.separator {
+    margin: 10px 0;
+    border-top: 1px solid #e6e6e6;
+}
+
+.Products .icons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    color: gray;
+    transition: all 0.5s;
+}
+
+    .Products .icons span {
+        position: relative;
+        padding: 10px;
+        border-radius: 50%;
+        transition: all 0.5s;
+        cursor: pointer;
+    }
+
+        .Products .icons span:hover {
+            color: #D10024;
+        }
+
+        .Products .icons span::after {
+            content: attr(title);
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: black;
+            color: white;
+            padding: 3px 6px;
+            font-size: 12px;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.5s;
+            white-space: nowrap;
+        }
+
+        .Products .icons span:hover::after {
+            opacity: 1;
+        }
+
+.view-details {
+    background-color: #D10024;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0 0 10px 10px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -50px;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.fixed-card-container:hover .view-details {
+    bottom: -30px;
+    opacity: 1;
+}

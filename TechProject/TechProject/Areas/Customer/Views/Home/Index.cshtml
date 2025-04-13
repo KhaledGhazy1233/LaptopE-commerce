@@ -1,31 +1,146 @@
 ﻿@model List<Product>
 
-<div class="row p-3">
-    @foreach (var product in Model)
-    {
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-            <div class="card border-0 p-3 shadow-lg border-top border-5 rounded custom-card">
+   @{
+    var sliderImages = new string[] {
+        Url.Content("~/images/sliderImages/91b9e1fed3cc797650b42eefd0df94e5.jpg"),
+        Url.Content("~/images/sliderImages/FUi2wwNdyFSwShZZ7LaqWf.jpg"),
+        Url.Content("~/images/sliderImages/Mobile-Accessories.jpg")
+    };
+
+    bool isFirst = true;
+    
+}
+
+
+
+
+
+<section id="slider">
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @foreach (var imageurl in sliderImages)
+            {
+                <div class="carousel-item @(isFirst ? "active" : "")">
+                    <img src="@imageurl" class="d-block w-100" alt="Slide">
+                </div>
+
+                isFirst = false;
+            }
+        </div>
+            <!-- لو عايز تحط ال buttons على ال slider -->
+            <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button> -->
+            <!-- <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"></button>
+            </div> -->
+        </div>
+
+    </section>
+    <div class="menu-bar">
+
+        <div class="word">
+            New Products
+        </div>
+
+    <ul class="list-unstyled" id="category-filter">
+        <li><a href="#" data-category="All">All</a></li>
+        <li><a href="#" data-category="Laptops">Laptops</a></li>
+        <li><a href="#" data-category="Gaming Laptops">Gaming Laptops</a></li>
+        <li><a href="#" data-category="Ultrabooks">Ultrabooks</a></li>
+        <li><a href="#" data-category="Workstations">Workstations</a></li>
+        <li><a href="#" data-category="Accessories">Accessories</a></li>
+    </ul>
+
+    </div>
+
+
+
+
+<div class="Products" id="product-list">
+        @foreach (var product in Model)
+        {
+        <div class="fixed-card-container" data-category="@product.Category.Name">
+            <div class="fixed-card">
+                @* <div class="discount">-30%</div> *@
                 <img src="@product.headerImageUrl" class="card-img-top rounded" class="card-img-top rounded" style="height: 200px; object-fit: cover;" />
-                <div class="card-body text-center">
-                    <h5 class="card-title text-dark opacity-75 text-uppercase">@product.Name</h5>
-                    <p class="text-muted">@product.Category.Name - @product.Brand</p>
-                    <p class="text-dark text-opacity-75">Price: <span class="fw-bold">@product.Price.ToString("C")</span></p>
-                    <a asp-area="Customer" asp-controller="Home" asp-action="Details" asp-route-id="@product.Id" class="btn btn-secondary w-100 py-2"> Details</a>
+                <div class="card-content">
+                    <div class="category">@product.Category.Name</div>
+                    <div class="product-name">@product.Name</div>
+                    <div class="price">@product.Price</div>
+
+                    <!-- Rating Section with Side Lines -->
+                    <div class="separator"></div>
+                    <div class="rating"> 
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i> 
+                        <i class="fa fa-star"></i> 
+                        <i class="fa fa-star"></i> 
+                        <i class="fa fa-star-half"></i> 
+                    </div> 
+                    <div class="separator"></div>
+
+                    <div class="icons">
+                        <span title="Wishlist">❤</span>
+                    </div>
                 </div>
             </div>
+            <div class="view-details">  <span title="View"> <a asp-area="Customer" asp-controller="Home" asp-action="Details" asp-route-id="@product.Id" class="btn text-dark font-weight-bolder w-100 py-2"> view details &#128065;</a></span></div>
         </div>
-    }
-</div>
-
-<style>
-    .custom-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        margin-bottom: 20px;
-    }
-
-        .custom-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-</style>
+
+    </div>
+@section Scripts {
+
+    
+          <script>
+               document.addEventListener("DOMContentLoaded", function () {
+            const categoryLinks = document.querySelectorAll("#category-filter a");
+            const productCards = document.querySelectorAll(".fixed-card-container");
+
+            // Create and insert the "no products" message
+            const noProductsMessage = document.createElement("div");
+            noProductsMessage.textContent = "There are no products in this category.";
+            noProductsMessage.style.display = "none";
+            noProductsMessage.style.textAlign = "center";
+            noProductsMessage.style.padding = "20px";
+            noProductsMessage.style.fontWeight = "bold";
+            document.getElementById("product-list").appendChild(noProductsMessage);
+
+            categoryLinks.forEach(link => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+
+                    const selectedCategory = this.getAttribute("data-category").toLowerCase();
+
+                    let hasVisible = false;
+
+                    productCards.forEach(card => {
+                        const productCategory = card.getAttribute("data-category").toLowerCase();
+
+                        if (selectedCategory === "all" || productCategory === selectedCategory) {
+                            card.style.display = "block";
+                            hasVisible = true;
+                        } else {
+                            card.style.display = "none";
+                        }
+                    });
+
+                    // Show or hide the "no products" message
+                    noProductsMessage.style.display = hasVisible ? "none" : "block";
+                });
+            });
+        });
+
+
+    </script>
+}
+
 
