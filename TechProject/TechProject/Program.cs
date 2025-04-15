@@ -20,7 +20,7 @@ namespace TechProject
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddDefaultTokenProviders()
               .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.ConfigureApplicationCookie(options =>
             {
@@ -70,47 +70,45 @@ namespace TechProject
             {
                 var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                 var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
                 string adminRole = "Admin";
-                string adminEmail = "adminUser@gmail.com";
+                string adminEmail = "admin@gmail.com";
                 string adminPassword = "Admin@123456";
 
-               
-                if (!await context.Roles.AnyAsync(r => r.Name == adminRole))
+                if (!await roleManager.RoleExistsAsync(adminRole))
                 {
                     await roleManager.CreateAsync(new IdentityRole(adminRole));
                 }
 
-                
-                if (!await context.Users.AnyAsync(u => u.Email == adminEmail))
+                if (await userManager.FindByEmailAsync(adminEmail) == null)
                 {
-                    var hasher = new PasswordHasher<ApplicationUser>();
-
                     var adminUser = new ApplicationUser
                     {
                         UserName = adminEmail,
                         Email = adminEmail,
                         EmailConfirmed = true,
                         City = "AdminCity",
-                        BirthDate = new DateTime(1990, 1, 1), 
-                        PasswordHash = hasher.HashPassword(null, adminPassword)
+                        BirthDate = new DateTime(1990, 1, 1),
                     };
 
-                    context.Users.Add(adminUser);
-                    await context.SaveChangesAsync();
-
-                   
-                    var adminUserRole = new IdentityUserRole<string>
+                    var result = await userManager.CreateAsync(adminUser, adminPassword);
+                    if (result.Succeeded)
                     {
-                        UserId = adminUser.Id,
-                        RoleId = context.Roles.First(r => r.Name == adminRole).Id
-                    };
-
-                    context.UserRoles.Add(adminUserRole);
-                    await context.SaveChangesAsync();
+                        await userManager.AddToRoleAsync(adminUser, adminRole);
+                    }
+                    else
+                    {
+                        // Handle errors if needed
+                        foreach (var error in result.Errors)
+                        {
+                            Console.WriteLine($"Error creating admin user: {error.Description}");
+                        }
+                    }
                 }
             }
         }
+
 
     }
 

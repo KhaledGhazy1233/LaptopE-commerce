@@ -11,12 +11,11 @@ namespace TechProject.Models
     public class ApplicationUser :IdentityUser
     {
         [Required]
-        public string ?Name { get; set; }
-        public string ?StreetAddress { get; set; }
+
         public string ?City { get; set; }
 
         public string ? State { get; set; }
-        public string ?PostalCode { get; set; }
+     
         [DataType(DataType.Date)]
         public DateTime? BirthDate { get; set; }
         public string? FirstName { get; set; }

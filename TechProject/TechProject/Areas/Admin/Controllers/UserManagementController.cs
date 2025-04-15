@@ -6,6 +6,7 @@ using Tech.DataAccess.Repository;
 using Tech.DataAccess.Repository.IRepository;
 using Tech.Models.ViewModels;
 using Tech.Utility;
+using TechProject.Models;
 
 
 namespace TechProject.Controllers
@@ -14,11 +15,11 @@ namespace TechProject.Controllers
     [Authorize(Roles = SD.Role_User_Admin)]
     public class UserManagementController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IUnitOfWork _unitOfWork;
 
-        public UserManagementController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, IUnitOfWork unitOfWork)
+        public UserManagementController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IUnitOfWork unitOfWork)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -57,6 +58,7 @@ namespace TechProject.Controllers
         [HttpGet]
         public async Task<IActionResult> ManageRoles(string userId)
         {
+            
             //var user = await _userManager.FindByIdAsync(userId);
             var user = _unitOfWork.ApplicationUser.Get(user => user.Id == userId);
             if (user == null) return NotFound();

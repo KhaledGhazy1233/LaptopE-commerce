@@ -53,14 +53,17 @@
                                         <div class="col-md-4">
                                             <label asp-for="Input.BirthYear" class="form-label">Year</label>
                                             <input asp-for="Input.BirthYear" class="form-control" />
+                                            <span asp-validation-for="Input.BirthYear" class="text-danger"></span>
                                         </div>
                                         <div class="col-md-4">
                                             <label asp-for="Input.BirthMonth" class="form-label">Month</label>
                                             <input asp-for="Input.BirthMonth" class="form-control" />
+                                            <span asp-validation-for="Input.BirthMonth" class="text-danger"></span>
                                         </div>
                                         <div class="col-md-4">
                                             <label asp-for="Input.BirthDay" class="form-label">Day</label>
                                             <input asp-for="Input.BirthDay" class="form-control" />
+                                            <span asp-validation-for="Input.BirthDay" class="text-danger"></span>
                                         </div>
                                     </div>
 
@@ -104,10 +107,12 @@
                                             <select asp-for="Input.Country" asp-items="@Model.CountryList" class="form-select">
                                                 <option disabled selected>--Select Country--</option>
                                             </select>
+                                            <span asp-validation-for="Input.Country" class="text-danger"></span>
                                         </div>
                                         <div class="col-md-4">
                                             <label asp-for="Input.City" class="form-label">City</label>
                                             <input asp-for="Input.City" class="form-control" />
+                                            <span asp-validation-for="Input.City" class="text-danger"></span>
                                         </div>
                                         <div class="col-md-4">
                                             <label asp-for="Input.Street" class="form-label">Street</label>

@@ -101,7 +101,7 @@ namespace TechProject.Areas.Customer.Controllers
         {
 
             var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
             if (string.IsNullOrEmpty(userId))
             {
