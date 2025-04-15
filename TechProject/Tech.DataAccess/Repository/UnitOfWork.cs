@@ -17,7 +17,8 @@ namespace Tech.DataAccess.Repository
         public IShoppingCartRepository ShoppingCart { get; set; }
 
         public IApplicationUserRepository ApplicationUser { get; set; }
-
+        public IOrderHeaderRepository OrderHeader { get; set; }
+        public IOrderDetailsRepository OrderDetail { get; set; }
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
@@ -25,6 +26,8 @@ namespace Tech.DataAccess.Repository
             Product= new ProductRepository(_db);
             ShoppingCart = new ShoppingCartRepository(_db);
             ApplicationUser = new ApplicationUserRepository(_db);
+            OrderHeader = new OrderHeaderRepository(_db);
+            OrderDetail = new OrderDetailsRepository(_db);
         }
         public void Save()
         {
