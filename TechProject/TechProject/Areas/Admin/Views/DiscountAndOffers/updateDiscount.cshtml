@@ -1,0 +1,56 @@
+﻿@model Discount
+
+<h2 class="mb-4">Update Discount</h2>
+
+<form asp-action="UpdateDiscount" method="post" class="p-4 border rounded shadow-sm bg-light">
+
+    <input asp-for="Id" type="hidden" />
+
+    <!-- عرض اسم المنتج فقط -->
+    <div class="mb-3">
+        <label class="form-label">Product</label>
+        <input type="text" class="form-control" value="@Model.Product?.Name" disabled />
+        <input type="hidden" asp-for="ProductId" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="StartDate" class="form-label"></label>
+        <input asp-for="StartDate" class="form-control" type="datetime-local" value="@Model.StartDate.ToString("yyyy-MM-ddTHH:mm")" />
+        <span asp-validation-for="StartDate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="EndDate" class="form-label"></label>
+        <input asp-for="EndDate" class="form-control" type="datetime-local" value="@Model.EndDate.ToString("yyyy-MM-ddTHH:mm")" />
+        <span asp-validation-for="EndDate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Presentage" class="form-label">Discount (%)</label>
+        <input asp-for="Presentage" class="form-control" type="number" min="1" max="100" step="1" />
+        <span asp-validation-for="Presentage" class="text-danger"></span>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3 form-check">
+            <input asp-for="IsActive" class="form-check-input" type="checkbox" />
+            <label asp-for="IsActive" class="form-check-label">Active</label>
+            <span asp-validation-for="IsActive" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-3 form-check">
+            <input type="hidden" name="IsCompitaple" value="false" />
+            <input asp-for="IsCompitaple" class="form-check-input" type="checkbox" />
+            <label asp-for="IsCompitaple" class="form-check-label">Compatible with others</label>
+            <span asp-validation-for="IsCompitaple" class="text-danger"></span>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-warning px-4">Update Discount</button>
+    <button type="button" onclick="window.history.back()" class="btn btn-success px-4">Back</button>
+
+</form>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

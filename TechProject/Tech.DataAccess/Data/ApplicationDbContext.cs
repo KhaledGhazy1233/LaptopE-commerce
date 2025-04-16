@@ -119,5 +119,6 @@ namespace TechProject.DataAccess.Data
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
         public DbSet<OrderHeader> OrderHeader { get; set; }
+        public DbSet<Discount> Discount { get; set; }
     }
 }
