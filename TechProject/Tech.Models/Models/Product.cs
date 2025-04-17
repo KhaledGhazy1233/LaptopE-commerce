@@ -50,7 +50,8 @@ namespace TechProject.Models
         public decimal Price { get; set; }
 
         public string? Description { get; set; }
-
+        public double? PriceAfterDiscount { get; set; }
+        public double? Presentage { get; set; }
         public  List<ProductImage?> ProductImages { get; set; } = new List<ProductImage>();
         public string? headerImageUrl { get; set; }
 

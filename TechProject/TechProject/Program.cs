@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Tech.Utility;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using TechProject.Models;
+using TechProject.BackgroundServices;
 
 namespace TechProject
 {
@@ -31,6 +32,7 @@ namespace TechProject
 
              builder.Services.AddRazorPages();
             builder.Services.AddScoped<IUnitOfWork,UnitOfWork >();
+            builder.Services.AddHostedService<DiscountDateValidationService>();
             builder.Services.AddScoped<IEmailSender,EmailSender>();
             builder.Services.Configure<IdentityOptions>(options =>
             {

@@ -14,6 +14,7 @@ namespace Tech.DataAccess.Repository.IRepository
         IApplicationUserRepository ApplicationUser { get; }
         IOrderHeaderRepository OrderHeader { get; }
         IOrderDetailsRepository OrderDetail { get; }
+        IDiscountRepository Discount { get; }
         void Save();
     }
 }

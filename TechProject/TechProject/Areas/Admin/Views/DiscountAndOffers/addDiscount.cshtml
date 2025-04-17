@@ -1,0 +1,57 @@
+﻿@model DiscountVM
+
+<form asp-action="AddDiscount" method="post" class="p-4 border rounded shadow-sm bg-light">
+
+    <div class="mb-3">
+        <label asp-for="discount.ProductId" class="form-label">Select Product</label>
+        <select asp-for="discount.ProductId" asp-items="Model.products" class="form-select">
+            <option value="">-- Select product --</option>
+        </select>
+        <span asp-validation-for="discount.ProductId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="discount.StartDate" class="form-label"></label>
+        <input asp-for="discount.StartDate" class="form-control" type="datetime-local" />
+        <span asp-validation-for="discount.StartDate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="discount.EndDate" class="form-label"></label>
+        <input asp-for="discount.EndDate" class="form-control" type="datetime-local" />
+        <span asp-validation-for="discount.EndDate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="discount.Presentage" class="form-label">Discount (%)</label>
+        <input asp-for="discount.Presentage" class="form-control" type="number" min="1" max="100" step="1" />
+        <span asp-validation-for="discount.Presentage" class="text-danger"></span>
+    </div>
+
+
+    <div class="row mb-3">
+        <div class="col-md-3 form-check">
+            <input asp-for="discount.IsActive" class="form-check-input" type="checkbox" />
+            <label asp-for="discount.IsActive" class="form-check-label"></label>
+            <span asp-validation-for="discount.IsActive" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-3 form-check">
+            <input asp-for="discount.IsCompitaple" class="form-check-input" type="checkbox" />
+            <label asp-for="discount.IsCompitaple" class="form-check-label"></label>
+            <span asp-validation-for="discount.IsCompitaple" class="text-danger"></span>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success px-4">Add Discount</button>
+    <button type="button" onclick="window.history.back()" class="btn btn-success px-4">Back</button>
+
+    
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    
+}

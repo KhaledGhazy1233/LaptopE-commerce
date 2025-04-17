@@ -69,12 +69,26 @@
         {
         <div class="fixed-card-container" data-category="@product.Category.Name">
             <div class="fixed-card">
-                @* <div class="discount">-30%</div> *@
+                @if (product.PriceAfterDiscount < (double)product.Price){
+                    <div class="discount">@product.Presentage%</div>
+                }
+                    
                 <img src="@product.headerImageUrl" class="card-img-top rounded" class="card-img-top rounded" style="height: 200px; object-fit: cover;" />
                 <div class="card-content">
                     <div class="category">@product.Category.Name</div>
                     <div class="product-name">@product.Name</div>
-                    <div class="price">@product.Price</div>
+                    <div class="price">
+                        @if (product.PriceAfterDiscount < (double)product.Price)  
+                        {
+                            <span class="original-price" style="text-decoration: line-through;">@product.Price</span>
+                            <span class="discounted-price">@product.PriceAfterDiscount</span>
+                        }
+                        else
+                        {
+                            <span>@product.Price</span>
+                          
+                        }
+                    </div>
 
                     <!-- Rating Section with Side Lines -->
                     <div class="separator"></div>

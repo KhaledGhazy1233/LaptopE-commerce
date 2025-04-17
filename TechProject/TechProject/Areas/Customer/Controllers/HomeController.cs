@@ -49,7 +49,23 @@ namespace TechProject.Areas.Customer.Controllers
                 ProductList = ProductList.Where(u => u.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
                              .ToList();
             }
+            foreach (var product in ProductList)
+            {
+                var discount = _unitofwork.Discount.Get(d => d.ProductId == product.Id); 
+                if (discount != null && discount.IsActive)
+                {
+                    product.Presentage = discount.Presentage * 100;
+                    product.PriceAfterDiscount = Math.Round((double)product.Price * (1 - discount.Presentage), 2); 
+                }
+                else
+                {
+                    product.PriceAfterDiscount = (double)product.Price; 
+                }
+            }
             ViewData["ActivePage"] = "Home";
+            
+            
+
             return View(ProductList);
         }
 

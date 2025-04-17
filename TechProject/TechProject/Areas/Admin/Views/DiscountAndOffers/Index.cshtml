@@ -1,0 +1,78 @@
+﻿@model List<Discount>
+<div>
+    <a class="btn btn-success" asp-action="AddDiscount" asp-area="Admin">Add new discount</a>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+           
+            <th class="text-start">product</th>
+            <th class="text-start">presentage</th>
+            <th class="text-start">StartDate</th>
+            <th class="text-start">EndDate</th>
+            <th colspan="2" class="text-center">Actions</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var discount in Model)
+        {
+            <tr>
+
+                <td>@discount.Product.Name</td>
+                <td>@discount.Presentage</td>
+                <td>@discount.StartDate</td>
+                <td>@discount.EndDate</td>
+                <td class="text-right">
+                    <a class="btn btn-primary" asp-action="updateDiscount" asp-area="Admin" asp-route-Id="@discount.Id">update</a>
+                </td>
+                <td class="text-right">
+                    <button class="btn btn-sm btn-danger delete-discount" data-id="@discount.Id">
+                        Delete
+                    </button>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+    @section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.delete-discount').click(function () {
+                var id = $(this).data('id');
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "This will permanently delete the discount.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: '@Url.Action("DeleteDiscount", "DiscountAndOffers", new { area = "Admin" })',
+                            type: 'POST',
+                            data: { id: id },
+                            success: function (response) {
+                                if (response.success) {
+                                    Swal.fire('Deleted!', response.message, 'success').then(() => {
+                                        location.reload();
+                                    });
+                                } else {
+                                    Swal.fire('Error', response.message, 'error');
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}
+

@@ -19,6 +19,7 @@ namespace Tech.DataAccess.Repository
         public IApplicationUserRepository ApplicationUser { get; set; }
         public IOrderHeaderRepository OrderHeader { get; set; }
         public IOrderDetailsRepository OrderDetail { get; set; }
+        public IDiscountRepository Discount { get; set; }
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
@@ -28,6 +29,7 @@ namespace Tech.DataAccess.Repository
             ApplicationUser = new ApplicationUserRepository(_db);
             OrderHeader = new OrderHeaderRepository(_db);
             OrderDetail = new OrderDetailsRepository(_db);
+            Discount = new DiscountRepository(_db);
         }
         public void Save()
         {

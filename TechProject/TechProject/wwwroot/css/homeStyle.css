@@ -239,7 +239,15 @@ a {
     font-size: 12px;
     border-radius: 4px;
 }
+.original-price {
+    text-decoration: line-through;
+    color: #ff0000; 
+}
 
+.discounted-price {
+    font-weight: bold;
+    color: #28a745; 
+}
 .card-content {
     padding: 15px;
     text-align: center;
