@@ -1,83 +1,163 @@
 ﻿@model Product
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+<style>
+    .thumbnail-image {
+        transition: all 0.3s ease;
+    }
 
-<div class="container mt-4">
-    <div class="card shadow-lg p-4">
+        .thumbnail-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
 
-        <!-- Full Width Header -->
-        <div class="bg-secondary bg-gradient text-white text-center py-4 mb-3 rounded">
-            <h2 class="text-uppercase">Details</h2>
-        </div>
+    .main-product-image {
+        transition: opacity 0.3s ease;
+    }
 
-        <!-- Back to Home Button -->
-        <div class="text-center mb-3">
-            <button class="btn btn-outline-secondary"><a asp-area="Customer" asp-action="Index">BACK TO HOME</a></button>
-        </div>
+    .active-thumbnail {
+        border: 2px solid #0d6efd !important;
+    }
+</style>
 
-        <!-- Product Name & Brand -->
-        <h2 class="text-center text-uppercase fw-bold">@Model.Name</h2>
-        <h5 class="text-center text-muted">by @Model.Brand</h5>
+<div class="container py-5">
+    <div class="row">
+        <!-- Product Images -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                @if (Model.ProductImages.Count > 0)
+                {
+                    <img src="@Model.ProductImages[0].ImageUrl" class="card-img-top main-product-image" alt="@Model.Name" style="cursor: pointer; max-height: 400px; object-fit: contain;">
+                }
+                else
+                {
+                    <img src="https://via.placeholder.com/600x400?text=No+Image" class="card-img-top main-product-image" alt="No Image" style="cursor: pointer; max-height: 400px; object-fit: contain;">
+                }
 
-        <div class="row mt-4">
-            <!-- Product Image Carousel -->
-            <div class="col-md-4 text-center">
-                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
+                <div class="card-body">
+                    <div class="row g-2">
                         @for (int i = 0; i < Model.ProductImages.Count; i++)
                         {
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@i" class="@(i == 0 ? "active" : "")" aria-current="true" aria-label="Slide @(i+1)"></button>
-                        }
-                    </div>
-                    <div class="carousel-inner">
-                        @for (int i = 0; i < Model.ProductImages.Count; i++)
-                        {
-                            <div class="carousel-item @(i == 0 ? "active" : "")">
-                                <img src="@Model.ProductImages[i].ImageUrl" class="d-block w-100 rounded shadow-sm" alt="@Model.Name" style="max-height: 250px;">
+                            <div class="col-3">
+                                <img src="@Model.ProductImages[i].ImageUrl"
+                                     class="img-thumbnail thumbnail-image @(i == 0 ? "active-thumbnail" : "")"
+                                     alt="Thumbnail @(i + 1)"
+                                     style="cursor: pointer;"
+                                     onclick="changeMainImage(this)">
                             </div>
                         }
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Details -->
+        <div class="col-md-6">
+            <h1 class="h2 mb-3">@Model.Name</h1>
+            <div class="mb-3">
+                <span class="h4 me-2">$@Model.Price</span>
+                @if (Model.Price > 0)
+                {
+                    <span class="text-muted text-decoration-line-through">$@Model.Price</span>
+                    <span class="badge bg-danger ms-2">@((int)(100 - (Model.Price / Model.Price * 100)))% OFF</span>
+                }
+            </div>
+
+            <div class="mb-3">
+                <div class="d-flex align-items-center">
+                    <div class="text-warning me-2">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span class="text-muted">(128 reviews)</span>
                 </div>
             </div>
 
-            <!-- Product Details -->
-            <div class="col-md-8">
-                <span class="badge bg-warning text-dark mb-2">Action</span>
-                <p><strong>Processor:</strong> @Model.Processor</p>
-                <p><strong>RAM:</strong> @Model.RAM GB</p>
-                <p><strong>Storage:</strong> @Model.Storage</p>
-                <p><strong>GPU:</strong> @Model.GPU</p>
-                <p><strong>Screen Size:</strong> @Model.ScreenSize inches</p>
-                <p><strong>Resolution:</strong> @Model.Resolution</p>
-                <p><strong>Price:</strong> <span class="text-success fw-bold">$@Model.Price</span></p>
+            <p class="mb-4">@Model.Description</p>
 
-                <p class="text-muted">@Model.Description</p>
+            <!-- Product Specifications -->
+            <div class="mb-4">
+                <h6 class="mb-2">Specifications</h6>
+                <ul class="list-unstyled">
+                    <li><strong>Brand:</strong> @Model.Brand</li>
+                    <li><strong>Processor:</strong> @Model.Processor</li>
+                    <li><strong>RAM:</strong> @Model.RAM GB</li>
+                    <li><strong>Storage:</strong> @Model.Storage</li>
+                    <li><strong>GPU:</strong> @Model.GPU</li>
+                    <li><strong>Screen Size:</strong> @Model.ScreenSize inches</li>
+                    <li><strong>Resolution:</strong> @Model.Resolution</li>
+                </ul>
+            </div>
 
-                <!-- Add to Cart Button -->
-                <form method="post" asp-area="Customer" asp-controller="Cart" asp-action="AddToCart">
+            <!-- Quantity -->
+            <div class="mb-4">
+                <form method="post" asp-area="Customer" asp-controller="Cart" asp-action="AddToCart" id="addToCartForm">
                     <input type="hidden" name="productId" value="@Model.Id" />
-                    <label for="quantity">Quantity:</label>
-                    <input type="number" name="quantity" id="quantity" value="1" min="1" class="form-control w-25 d-inline" />
-
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <button type="submit" class="btn btn-dark mt-3 w-100">Add to Cart</button>
-                    }
-                    else
-                    {
-                        <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("AddToCart", "Cart", new { productId = Model.Id, quantity = 1 })"
-                           class="btn btn-dark mt-3 w-100">Add to Cart</a>
-                    }
+                    <div class="d-flex align-items-center mb-3">
+                        <label class="me-2"><strong>Quantity:</strong></label>
+                        <input type="number" name="quantity" value="1" min="1" max="100" class="form-control w-25">
+                    </div>
+                    <!-- Actions -->
+                    <div class="d-grid gap-2 mt-3">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                        }
+                        else
+                        {
+                            <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("AddToCart", "Cart", new { productId = Model.Id, quantity = 1 })"
+                               class="btn btn-primary">Add to Cart</a>
+                        }
+                        <button class="btn btn-outline-secondary" type="button">
+                            <i class="far fa-heart me-2"></i>Add to Wishlist
+                        </button>
+                    </div>
                 </form>
+            </div>
 
+            <!-- Additional Info -->
+            <div class="mt-4">
+                <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-truck text-primary me-2"></i>
+                    <span>Free shipping on orders over $50</span>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-undo text-primary me-2"></i>
+                    <span>30-day return policy</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-shield-alt text-primary me-2"></i>
+                    <span>2-year warranty</span>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+@section Scripts {
+    <script>
+        function changeMainImage(thumbnail) {
+            const mainImage = document.querySelector('.main-product-image');
+
+            mainImage.style.opacity = 0;
+
+            setTimeout(() => {
+                mainImage.src = thumbnail.src;
+                mainImage.style.opacity = 1;
+
+                document.querySelectorAll('.thumbnail-image').forEach(img => {
+                    img.classList.remove('active-thumbnail');
+                });
+                thumbnail.classList.add('active-thumbnail');
+            }, 200);
+        }
+
+        document.querySelectorAll('.thumbnail-image').forEach(img => {
+            img.addEventListener('click', function() {
+                changeMainImage(this);
+            });
+        });
+    </script>
+}
