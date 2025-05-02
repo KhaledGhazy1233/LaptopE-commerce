@@ -13,37 +13,206 @@
 
 
 
+<div class="container-fluid px-0 overflow-hidden">
+    <div id="mainHeroSlider" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="false">
 
-
-<section id="slider">
-    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            @foreach (var imageurl in sliderImages)
-            {
-                <div class="carousel-item @(isFirst ? "active" : "")">
-                    <img src="@imageurl" class="d-block w-100" alt="Slide">
-                </div>
-
-                isFirst = false;
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            @{
+                var indicatorIndex = 0;
+                var imageCounter = 0;
+                var maxImages = 5; // عدد الصور اللي عايزة تعرضيهم
+                foreach (var product in Model)
+                {
+                    foreach (var image in product.ProductImages)
+                    {
+                        if (imageCounter >= maxImages) { break; }
+                        <button type="button" data-bs-target="#mainHeroSlider" data-bs-slide-to="@indicatorIndex"
+                                class="@(indicatorIndex == 0 ? "active" : "")"
+                                aria-current="@(indicatorIndex == 0 ? "true" : "false")"
+                                aria-label="Slide @(indicatorIndex + 1)">
+                        </button>
+                        indicatorIndex++;
+                        imageCounter++;
+                    }
+                    if (imageCounter >= maxImages) { break; }
+                }
             }
         </div>
-            <!-- لو عايز تحط ال buttons على ال slider -->
-            <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button> -->
-            <!-- <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true"></button>
-                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"></button>
-            </div> -->
+
+        <!-- Slides -->
+        <div class="carousel-inner">
+            @{
+                var firstSlide = true;
+                imageCounter = 0; // نبدأ العداد من الأول
+                foreach (var product in Model)
+                {
+                    foreach (var image in product.ProductImages)
+                    {
+                        if (imageCounter >= maxImages) { break; }
+                        <div class="carousel-item @(firstSlide ? "active" : "") position-relative">
+                            <img src="@image.ImageUrl" class="d-block w-100" style="height: 400px; object-fit: cover; object-position: center;" alt="@product.Name">
+
+                            <!-- Gradient Overlay -->
+                            <div class="gradient-overlay"></div>
+
+                            <!-- Content -->
+                            <div class="carousel-caption d-flex flex-column justify-content-center h-100 pb-5 pe-lg-5 text-white">
+                                <div class="animate__animated animate__fadeIn animate__faster">
+                                    <h2 class="display-4 fw-bold mb-4 text-capitalize">@product.Name</h2>
+                                    <a asp-area="Customer"  asp-controller="Home" asp-action="Details" asp-route-id="@product.Id" class="btn btn-danger btn-lg px-4 py-2 rounded-1 shadow-sm btn-hover-transform">
+                                        View Details <i class="bi bi-arrow-right ms-2"></i>
+                                        </a>
+                                </div>
+                            </div>
+                        </div>
+                        firstSlide = false;
+                        imageCounter++;
+                    }
+                    if (imageCounter >= maxImages) { break; }
+                }
+            }
         </div>
 
-    </section>
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#mainHeroSlider" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark bg-opacity-50 rounded-circle p-3" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mainHeroSlider" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark bg-opacity-50 rounded-circle p-3" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<style>
+    /* Gradient Overlay */
+    .gradient-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 70%, transparent 100%);
+        z-index: 1;
+    }
+
+    /* Caption Styling */
+    .carousel-caption {
+        z-index: 2;
+        text-align: right;
+        bottom: auto;
+        left: auto;
+        right: 8%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+        .carousel-caption h2 {
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+
+    /* Button Styling */
+    .btn-hover-transform {
+        transition: all 0.3s ease;
+        border-width: 2px;
+    }
+
+        .btn-hover-transform:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+    .btn-danger:hover {
+        background-color: #c82333 !important;
+        border-color: #bd2130 !important;
+    }
+
+    /* Indicators */
+    .carousel-indicators [data-bs-target] {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        margin: 0 6px;
+        transition: all 0.4s ease;
+    }
+
+    .carousel-indicators .active {
+        background-color: #dc3545;
+        border: 2px solid #fff;
+        transform: scale(1.3);
+    }
+
+    /* Slide Transition */
+    .carousel-fade .carousel-item {
+        transition: opacity 0.7s ease-in-out;
+    }
+
+    .carousel-item {
+        height: 400px;
+    }
+
+    /* Control Buttons */
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-size: 2rem;
+        width: 3rem;
+        height: 3rem;
+    }
+
+    /* Media Query for mobile */
+    @@media (max-width: 768px) {
+        .carousel-caption
+
+    {
+        right: 5%;
+    }
+
+    .carousel-caption h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .carousel-item {
+        height: 350px;
+    }
+
+    .btn-lg {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+    }
+
+    }
+</style>
+
+<!-- Animate.css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+<style>
+    /* تحسين شكل الكابشن */
+    .carousel-caption {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .text-shadow {
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .carousel-fade .carousel-item {
+        transition: opacity 1s ease-in-out;
+    }
+</style>
+
+
+
+
+
+
+
     <div class="menu-bar">
 
         <div class="word">

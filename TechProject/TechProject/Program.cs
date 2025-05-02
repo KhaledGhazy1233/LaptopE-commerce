@@ -75,8 +75,8 @@ namespace TechProject
                 var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
                 string adminRole = "Admin";
-                string adminEmail = "admin@gmail.com";
-                string adminPassword = "Admin@123456";
+                string adminEmail = "sawsanelsebay2@gmail.com";
+                string adminPassword = "Sawsan146";
 
                 if (!await roleManager.RoleExistsAsync(adminRole))
                 {

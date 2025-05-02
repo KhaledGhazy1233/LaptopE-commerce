@@ -1,153 +1,200 @@
 ﻿@page
 @model RegisterModel
 
-<section class="h-100 w-100">
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
+@{
+    ViewData["Title"] = "Register";
+}
+
+<section class="bg-light py-5">
+    <div class="container">
+        <div class="row justify-content-center">
             <div class="col-lg-10">
-                <div class="card shadow-lg" style="border-radius: 15px;">
-                    <div class="card-body p-4">
+                <div class="card border-0 shadow-lg rounded-3 overflow-hidden">
+                    <!-- Form Header -->
+                    <div class="card-header bg-primary text-white py-4">
+                        <div class="text-center">
+                            <h2 class="fw-bold mb-1">Create Your Account</h2>
+                            <p class="mb-0">Join our community today</p>
+                        </div>
+                    </div>
+
+                    <!-- Form Body -->
+                    <div class="card-body p-5">
                         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                            <div asp-validation-summary="ModelOnly" class="alert alert-danger mb-4" role="alert"></div>
+
                             <div class="row g-4">
-                                <!-- Left Side -->
-                                <div class="col-lg-6">
-                                    <h3 class="fw-bold text-primary mb-4">General Information</h3>
+                                <!-- Personal Information Column -->
+                                <div class="col-lg-6 pe-lg-4">
+                                    <h4 style="color: #3A8FB7;" class=" mb-4 fw-bold">
+                                        <i class="fas fa-user-circle me-2"></i>Personal Information
+                                    </h4>
 
-                                    <div class="mb-3">
-                                        <label asp-for="Input.FirstName" class="form-label">First Name</label>
-                                        <input asp-for="Input.FirstName" class="form-control" />
-                                        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <input asp-for="Input.FirstName" class="form-control" placeholder="First Name" />
+                                                <label asp-for="Input.FirstName"></label>
+                                                <span asp-validation-for="Input.FirstName" class="text-danger small"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <input asp-for="Input.LastName" class="form-control" placeholder="Last Name" />
+                                                <label asp-for="Input.LastName"></label>
+                                                <span asp-validation-for="Input.LastName" class="text-danger small"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label class="form-label">Gender</label>
+                                            <div class="d-flex gap-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" asp-for="Input.Gender" value="Female" id="female">
+                                                    <label class="form-check-label" for="female">Female</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" asp-for="Input.Gender" value="Male" id="male">
+                                                    <label class="form-check-label" for="male">Male</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" asp-for="Input.Gender" value="Other" id="other">
+                                                    <label class="form-check-label" for="other">Other</label>
+                                                </div>
+                                            </div>
+                                            <span asp-validation-for="Input.Gender" class="text-danger small"></span>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label class="form-label">Date of Birth</label>
+                                            <div class="row g-2">
+                                                <div class="col-md-4">
+                                                    <div class="form-floating">
+                                                        <input asp-for="Input.BirthYear" class="form-control" placeholder="Year" />
+                                                        <label>Year</label>
+                                                        <span asp-validation-for="Input.BirthYear" class="text-danger small"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-floating">
+                                                        <input asp-for="Input.BirthMonth" class="form-control" placeholder="Month" />
+                                                        <label>Month</label>
+                                                        <span asp-validation-for="Input.BirthMonth" class="text-danger small"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-floating">
+                                                        <input asp-for="Input.BirthDay" class="form-control" placeholder="Day" />
+                                                        <label>Day</label>
+                                                        <span asp-validation-for="Input.BirthDay" class="text-danger small"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        @if (User.IsInRole(SD.Role_User_Admin))
+                                        {
+                                            <div class="col-12">
+                                                <div class="form-floating">
+                                                    <select asp-for="Input.Role" asp-items="@Model.RoleList" class="form-select">
+                                                        <option value="" disabled selected>Select Role</option>
+                                                    </select>
+                                                    <label asp-for="Input.Role"></label>
+                                                </div>
+                                            </div>
+                                        }
                                     </div>
-
-                                    <div class="mb-3">
-                                        <label asp-for="Input.LastName" class="form-label">Last Name</label>
-                                        <input asp-for="Input.LastName" class="form-control" />
-                                        <span asp-validation-for="Input.LastName" class="text-danger"></span>
-                                    </div>
-
-                                  
-                                    <div class="mb-3">
-                                        <label asp-for="Input.Gender" class="form-label">Gender</label><br>
-
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" asp-for="Input.Gender" value="Female" required>
-                                            <label class="form-check-label">Female</label>
-                                        </div>
-
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" asp-for="Input.Gender" value="Male" required>
-                                            <label class="form-check-label">Male</label>
-                                        </div>
-
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" asp-for="Input.Gender" value="Other" required>
-                                            <label class="form-check-label">Other</label>
-                                        </div>
-
-                                        <span asp-validation-for="Input.Gender" class="text-danger"></span>
-                                    </div>
-
-
-                                    <div class="row g-2">
-                                        <div class="col-md-4">
-                                            <label asp-for="Input.BirthYear" class="form-label">Year</label>
-                                            <input asp-for="Input.BirthYear" class="form-control" />
-                                            <span asp-validation-for="Input.BirthYear" class="text-danger"></span>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label asp-for="Input.BirthMonth" class="form-label">Month</label>
-                                            <input asp-for="Input.BirthMonth" class="form-control" />
-                                            <span asp-validation-for="Input.BirthMonth" class="text-danger"></span>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label asp-for="Input.BirthDay" class="form-label">Day</label>
-                                            <input asp-for="Input.BirthDay" class="form-control" />
-                                            <span asp-validation-for="Input.BirthDay" class="text-danger"></span>
-                                        </div>
-                                    </div>
-
-                                    @if (User.IsInRole(SD.Role_User_Admin))
-                                    {
-                                        <div class="mt-3">
-                                            <label asp-for="Input.Role" class="form-label">Role</label>
-                                            <select asp-for="Input.Role" asp-items="@Model.RoleList" class="form-select">
-                                                <option disabled selected>--Select Role--</option>
-                                            </select>
-                                        </div>
-                                    }
-                                  
                                 </div>
-                              
-                                <!-- Right Side -->
-                                <div class="col-lg-6 bg-light p-4 rounded">
-                                    <h3 class="fw-bold text-primary mb-4">Contact Details</h3>
 
-                                    <div class="mb-3">
-                                        <label asp-for="Input.Email" class="form-label">Email</label>
-                                        <input asp-for="Input.Email" class="form-control" />
-                                        <span asp-validation-for="Input.Email" class="text-danger"></span>
-                                    </div>
+                                <!-- Account Information Column -->
+                                <div class="col-lg-6 ps-lg-4">
+                                    <h4 style="color: #3A8FB7;" class="mb-4 fw-bold">
+                                        <i class="fas fa-lock me-2"></i>Account Details
+                                    </h4>
 
-                                    <div class="mb-3">
-                                        <label asp-for="Input.Password" class="form-label">Password</label>
-                                        <input asp-for="Input.Password" class="form-control" type="password" />
-                                        <span asp-validation-for="Input.Password" class="text-danger"></span>
-                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <div class="form-floating">
+                                                <input asp-for="Input.Email" class="form-control" placeholder="Email" />
+                                                <label asp-for="Input.Email"></label>
+                                                <span asp-validation-for="Input.Email" class="text-danger small"></span>
+                                            </div>
+                                        </div>
 
-                                    <div class="mb-3">
-                                        <label asp-for="Input.ConfirmPassword" class="form-label">Confirm Password</label>
-                                        <input asp-for="Input.ConfirmPassword" class="form-control" type="password" />
-                                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-                                    </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <input asp-for="Input.Password" class="form-control" placeholder="Password" />
+                                                <label asp-for="Input.Password"></label>
+                                                <span asp-validation-for="Input.Password" class="text-danger small"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Confirm Password" />
+                                                <label asp-for="Input.ConfirmPassword"></label>
+                                                <span asp-validation-for="Input.ConfirmPassword" class="text-danger small"></span>
+                                            </div>
+                                        </div>
 
-                                    <div class="row g-2">
-                                        <div class="col-md-4">
-                                            <label asp-for="Input.Country" class="form-label">Country</label>
-                                            <select asp-for="Input.Country" asp-items="@Model.CountryList" class="form-select">
-                                                <option disabled selected>--Select Country--</option>
-                                            </select>
-                                            <span asp-validation-for="Input.Country" class="text-danger"></span>
+                                        <div class="col-12">
+                                            <div class="form-floating">
+                                                <select asp-for="Input.Country" asp-items="@Model.CountryList" class="form-select">
+                                                    <option value="" disabled selected>Select Country</option>
+                                                </select>
+                                                <label asp-for="Input.Country"></label>
+                                                <span asp-validation-for="Input.Country" class="text-danger small"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-8">
+                                            <div class="form-floating">
+                                                <input asp-for="Input.City" class="form-control" placeholder="City" />
+                                                <label asp-for="Input.City"></label>
+                                                <span asp-validation-for="Input.City" class="text-danger small"></span>
+                                            </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <label asp-for="Input.City" class="form-label">City</label>
-                                            <input asp-for="Input.City" class="form-control" />
-                                            <span asp-validation-for="Input.City" class="text-danger"></span>
+                                            <div class="form-floating">
+                                                <input asp-for="Input.Street" class="form-control" placeholder="Street" />
+                                                <label asp-for="Input.Street"></label>
+                                            </div>
                                         </div>
+
                                         <div class="col-md-4">
-                                            <label asp-for="Input.Street" class="form-label">Street</label>
-                                            <input asp-for="Input.Street" class="form-control" />
+                                            <div class="form-floating">
+                                                <select asp-for="Input.CountryCode" class="form-select">
+                                                    <option value="+1">+1 (USA)</option>
+                                                    <option value="+44">+44 (UK)</option>
+                                                    <option value="+49">+49 (Germany)</option>
+                                                    <option value="+91">+91 (India)</option>
+                                                    <option value="+20">+20 (Egypt)</option>
+                                                    <option value="+971">+971 (UAE)</option>
+                                                </select>
+                                                <label>Country Code</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-floating">
+                                                <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Phone Number" />
+                                                <label asp-for="Input.PhoneNumber"></label>
+                                                <span asp-validation-for="Input.PhoneNumber" class="text-danger small"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 mt-3">
+                                            <button id="registerSubmit" type="submit" class="btn btn-primary btn-lg w-100 py-3">
+                                                <i class="fas fa-user-plus me-2"></i>Register Now
+                                            </button>
                                         </div>
                                     </div>
-
-
-
-                                    <div class="row g-2">
-                                        <div class="col-md-5">
-                                            <label class="form-label">Country Code</label>
-                                            <select asp-for="Input.CountryCode" class="form-select" required>
-                                                <option value="+1">+1 (USA)</option>
-                                                <option value="+44">+44 (UK)</option>
-                                                <option value="+49">+49 (Germany)</option>
-                                                <option value="+91">+91 (India)</option>
-                                                <option value="+20">+20 (Egypt)</option>
-                                                <option value="+971">+971 (UAE)</option>
-                                               
-                                            </select>
-                                        </div>
-
-                                        <div class="col-md-7">
-                                            <label asp-for="Input.PhoneNumber" class="form-label">Phone Number</label>
-                                            <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Enter phone number" required />
-                                            <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                    <button id="registerSubmit" type="submit" class="btn btn-light text-primary p-2 border-primary mt-4 w-25">Register</button>
                                 </div>
                             </div>
-
-                            
                         </form>
+                    </div>
+
+                    <!-- Form Footer -->
+                    <div class="card-footer bg-light py-3 text-center">
+                        <p class="mb-0">Already have an account? <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Sign in</a></p>
                     </div>
                 </div>
             </div>
@@ -155,13 +202,65 @@
     </div>
 </section>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-    <style>
-      
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+    }
 
-        .bg-light {
-            background-color: #679acd !important;
+    .form-floating > label {
+        color: #6c757d;
+        font-weight: 500;
+    }
+
+    .form-control, .form-select {
+        border: 1px solid #ced4da;
+        transition: all 0.3s;
+    }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #2A7F99; /* اللون الأزرق الداكن */
+            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
         }
-    </style>
-}
+
+    .card {
+        border: none;
+        background-color: #f8f9fa;
+    }
+
+    .card-header {
+        background: linear-gradient(135deg, #1e3c72 0%, #2A7F99 100%); /* اللون الأزرق الداكن الجديد */
+        color: #fff;
+        border-bottom: 2px solid #1e3c72;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #1e3c72 0%, #2A7F99 100%); /* اللون الأزرق الداكن الجديد */
+        border: none;
+        transition: all 0.3s;
+    }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2A7F99 0%, #1e3c72 100%); /* اللون الأزرق الداكن الجديد */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+    .rounded-3 {
+        border-radius: 0.75rem !important;
+    }
+
+    .shadow-lg {
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .form-check-label {
+        font-weight: 400;
+    }
+
+    .alert-danger {
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        color: #721c24;
+    }
+</style>

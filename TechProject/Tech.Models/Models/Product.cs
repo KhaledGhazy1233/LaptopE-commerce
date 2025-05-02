@@ -48,7 +48,6 @@ namespace TechProject.Models
         [Range(0, double.MaxValue)]
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
-
         public string? Description { get; set; }
         public double? PriceAfterDiscount { get; set; }
         public double? Presentage { get; set; }
