@@ -93,6 +93,19 @@
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewData["ActivePage"]?.ToString() == "About" ? "stable" : "")"
+                               asp-area="Customer" asp-controller="Home" asp-action="About">
+                                AboutUs
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewData["ActivePage"]?.ToString() == "Contact" ? "stable" : "")"
+                               asp-area="Customer" asp-controller="Home" asp-action="Contact">
+                                Contact
+                            </a>
+                      
+
                         @if (User.IsInRole(SD.Role_User_Admin))
                         {
                             <!-- Dashboard Link (Admin Only) -->

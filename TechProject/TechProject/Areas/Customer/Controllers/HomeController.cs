@@ -69,8 +69,14 @@ namespace TechProject.Areas.Customer.Controllers
             return View(ProductList);
         }
 
-
-
+        public IActionResult About()
+        {
+            return View("About");
+        }
+        public IActionResult Contact()
+        {
+            return View("Contact");
+        }
         public IActionResult Privacy()
         {
             ViewData["ActivePage"] = "Privacy";

@@ -27,7 +27,7 @@ namespace TechProject.Areas.Admin.Controllers
         }
         public IActionResult Index(int page = 1)
         {
-            int pageSize = 10; 
+            int pageSize = 5; 
             var products = _db.Products.Include(p => p.Category).ToList();
             var categories = _db.Categories.ToList();
 

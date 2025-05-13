@@ -22,7 +22,6 @@ namespace TechProject.Areas.Customer.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            // Get or create wishlist
             var wishlist = _unitOfWork.WishList.Get(w => w.ApplicationUserId == userId);
             if (wishlist == null)
             {
@@ -34,7 +33,6 @@ namespace TechProject.Areas.Customer.Controllers
                 _unitOfWork.Save();
             }
 
-            // Check if item already exists
             var existingItem = _unitOfWork.WishListItem.Get(wi => wi.WishlistId == wishlist.Id && wi.ProductId == productId);
             if (existingItem == null)
             {
@@ -47,8 +45,15 @@ namespace TechProject.Areas.Customer.Controllers
                 _unitOfWork.Save();
             }
 
-            return RedirectToAction("Index");
+            var referer = Request.Headers["Referer"].ToString();
+            if (!string.IsNullOrEmpty(referer))
+            {
+                return Redirect(referer);
+            }
+
+            return RedirectToAction("Index", "Home");
         }
+
 
         public IActionResult Index()
         {

@@ -186,7 +186,7 @@ namespace Tech.DataAccess.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Discount");
+                    b.ToTable("Discount", (string)null);
                 });
 
             modelBuilder.Entity("Tech.Models.Models.OrderDetails", b =>
@@ -216,7 +216,7 @@ namespace Tech.DataAccess.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderDetails");
+                    b.ToTable("OrderDetails", (string)null);
                 });
 
             modelBuilder.Entity("Tech.Models.Models.OrderHeader", b =>
@@ -298,7 +298,7 @@ namespace Tech.DataAccess.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("OrderHeader");
+                    b.ToTable("OrderHeader", (string)null);
                 });
 
             modelBuilder.Entity("Tech.Models.Models.ProductImage", b =>
@@ -320,7 +320,7 @@ namespace Tech.DataAccess.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductImages");
+                    b.ToTable("ProductImages", (string)null);
                 });
 
             modelBuilder.Entity("Tech.Models.Models.WishList", b =>
@@ -339,7 +339,7 @@ namespace Tech.DataAccess.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("Wishlists");
+                    b.ToTable("Wishlists", (string)null);
                 });
 
             modelBuilder.Entity("Tech.Models.Models.WishListItem", b =>
@@ -362,7 +362,7 @@ namespace Tech.DataAccess.Migrations
 
                     b.HasIndex("WishlistId");
 
-                    b.ToTable("WishlistItems");
+                    b.ToTable("WishlistItems", (string)null);
                 });
 
             modelBuilder.Entity("TechProject.Models.ApplicationUser", b =>
@@ -473,7 +473,7 @@ namespace Tech.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
 
                     b.HasData(
                         new
@@ -569,7 +569,7 @@ namespace Tech.DataAccess.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
 
                     b.HasData(
                         new
@@ -668,7 +668,7 @@ namespace Tech.DataAccess.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ShoppingCarts");
+                    b.ToTable("ShoppingCarts", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
