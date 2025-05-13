@@ -18,6 +18,8 @@ namespace TechProject.Areas.Customer.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        [HttpPost]
+        [HttpPost]
         public IActionResult AddToWishlist(int productId)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -33,26 +35,21 @@ namespace TechProject.Areas.Customer.Controllers
                 _unitOfWork.Save();
             }
 
-            var existingItem = _unitOfWork.WishListItem.Get(wi => wi.WishlistId == wishlist.Id && wi.ProductId == productId);
-            if (existingItem == null)
+            var itemExists = _unitOfWork.WishListItem.Get(wi => wi.WishlistId == wishlist.Id && wi.ProductId == productId);
+            if (itemExists == null)
             {
-                var newItem = new WishListItem
+                var wishListItem = new WishListItem
                 {
-                    WishlistId = wishlist.Id,
-                    ProductId = productId
+                    ProductId = productId,
+                    WishlistId = wishlist.Id
                 };
-                _unitOfWork.WishListItem.Add(newItem);
+                _unitOfWork.WishListItem.Add(wishListItem);
                 _unitOfWork.Save();
             }
 
-            var referer = Request.Headers["Referer"].ToString();
-            if (!string.IsNullOrEmpty(referer))
-            {
-                return Redirect(referer);
-            }
-
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index");
         }
+
 
 
         public IActionResult Index()
@@ -73,6 +70,7 @@ namespace TechProject.Areas.Customer.Controllers
             return View(wishlistItems);
         }
 
+        [HttpPost]
         public IActionResult RemoveFromWishlist(int wishlistItemId)
         {
             var wishlistItem = _unitOfWork.WishListItem.Get(wi => wi.Id == wishlistItemId);

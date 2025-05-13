@@ -148,6 +148,7 @@
 
             <!-- Quantity and Actions -->
             <div class="mb-4">
+                <!-- Add To Cart Form -->
                 <form method="post" asp-area="Customer" asp-controller="Cart" asp-action="AddToCart" id="addToCartForm">
                     <input type="hidden" name="productId" value="@Model.Id" />
                     <div class="d-flex align-items-center mb-3">
@@ -164,11 +165,28 @@
                             <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("AddToCart", "Cart", new { productId = Model.Id, quantity = 1 })"
                                class="btn btn-primary">Add to Cart</a>
                         }
-                        <button class="btn wishlist-btn" type="button">
-                            <i class="far fa-heart"></i>Add to Wishlist
-                        </button>
                     </div>
                 </form>
+
+                <!-- Add To Wishlist Form -->
+                <div class="d-grid gap-2 mt-2">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <form method="post" asp-controller="Wishlist" asp-action="AddToWishlist" asp-route-productId="@Model.Id">
+                            <button class="form-control" class=" btn wishlist-btn" type=" submit" class="btn wishlist-btn">Add to WishList</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <a asp-area="Identity"
+                           asp-page="/Account/Login"
+                           asp-route-returnUrl="@Url.Action("AddToWishlist", "Wishlist", new { productId = Model.Id })"
+                           class="btn btn-primary">
+                            Add to WishList
+                        </a>
+                    }
+                </div>
+
             </div>
 
             <!-- Additional Info -->
