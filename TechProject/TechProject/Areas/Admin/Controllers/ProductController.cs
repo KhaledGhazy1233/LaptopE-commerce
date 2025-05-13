@@ -25,10 +25,22 @@ namespace TechProject.Areas.Admin.Controllers
             _db = db;
             _webHostEnvironment = webHostEnvironment;
         }
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
+            int pageSize = 10; 
             var products = _db.Products.Include(p => p.Category).ToList();
-            return View(products); 
+            var categories = _db.Categories.ToList();
+
+            ViewData["Categories"] = categories;
+
+            int totalPages = (int)Math.Ceiling((double)products.Count() / pageSize);
+
+            var pagedProducts = products.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+            ViewBag.Page = page;
+            ViewBag.TotalPages = totalPages;
+
+            return View(pagedProducts);
         }
 
         public IActionResult IndexList()

@@ -1,79 +1,186 @@
 ﻿@model List<Product>
-<partial name ="_Notification"/>
-<div class="card shadow border-0 mt-4">
-    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+
+<partial name="_Notification" />
+<div class="card shadow-lg border-0 my-4">
+    <div class="card-header bg-dark text-white bg-gradient py-3">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="text-white py-2">Product List</h2>
+                <h2 class="py-2">Product List</h2>
             </div>
         </div>
     </div>
     <div class="card-body p-4">
-        <div class="row pb-3">
-            <div class="col-6">
+        <!-- Enhanced search and filter form -->
+        <div class="row pb-3 align-items-center">
+            <div class="col-md-5">
+                <div class="input-group">
+                    <span class="input-group-text bg-primary text-white">
+                        <i class="bi bi-search"></i>
+                    </span>
+                    <input type="text" id="productSearch" class="form-control form-control-lg"
+                           placeholder="Search by product name..." />
+                </div>
             </div>
-            <div class="col-6 text-end">
-                <a asp-controller="Product" asp-action="Upsert" class="btn btn-secondary">
-                    <i class="bi bi-plus-circle"></i>  Create New Product
+            <div class="col-md-5">
+                <div class="input-group">
+                    <span class="input-group-text bg-primary text-white">
+                        <i class="bi bi-filter-square"></i>
+                    </span>
+                    <select id="categoryFilter" class="form-select form-select-lg">
+                        <option value="">All Categories</option>
+                        @foreach (var category in ViewData["Categories"] as List<Category>)
+                        {
+                            <option value="@category.Id">@category.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2 text-end">
+                <a asp-controller="Product" asp-action="Upsert" class="btn btn-success btn-lg">
+                    <i class="bi bi-plus-circle me-2"></i> Create
                 </a>
             </div>
         </div>
 
-        <table class=".delete-product table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>ProductName</th>
-                    <th>Description</th>
-                    <th>Brand</th>
-                    <th>Processor</th>
-                    <th>Ram</th>
-                    <th>Storage</th>
-                    <th>Gpu</th>
-                    <th>ScreenSize</th>
-                    <th>Resolution</th>
-                    <th>Price</th>
-                    <th>CategoryName</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var obj in Model)
-                {
+        <!-- Enhanced product table -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <thead class="table bg-dark text-white">
                     <tr>
-                        <td>@obj.Name</td>
-                        <td>@obj.Description</td>
-                        <td>@obj.Brand</td>
-                        <td>@obj.Processor</td>
-                        <td>@obj.RAM</td>
-                        <td>@obj.Storage</td>
-                        <td>@obj.GPU</td>
-                        <td>@obj.ScreenSize</td>
-                        <td>@obj.Resolution</td>
-                        <td>@obj.Price</td>
-                        <td>@obj.Category.Name</td>
-                        <td>
-                            <div class="w-75 btn-group" role="group">
-                                <a asp-controller="Product" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-secondary mx-2">
-                                    <i class="bi bi-pencil-square"></i> Update
-                                </a>
-                                <a href="#" class="btn btn-danger mx-2 delete-product" data-id="@obj.Id">
-                                    <i class="bi bi-trash-fill"></i> Delete
-                                </a>
-                            </div>
-                        </td>
+                        <th class="align-middle">Product Name</th>
+                        <th class="align-middle">Description</th>
+                        <th class="align-middle">Brand</th>
+                        <th class="align-middle">Processor</th>
+                        <th class="align-middle">RAM</th>
+                        <th class="align-middle">Storage</th>
+                        <th class="align-middle">GPU</th>
+                        <th class="align-middle">Screen Size</th>
+                        <th class="align-middle">Resolution</th>
+                        <th class="align-middle">Price</th>
+                        <th class="align-middle">Category</th>
+                        <th class="align-middle text-center">Actions</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody id="productTableBody" style="line-height: 1.8;">
+                    @foreach (var obj in Model)
+                    {
+                        <tr class="productRow" data-name="@obj.Name.ToLower()" data-category="@obj.Category?.Id">
+                            <td class="align-middle">@obj.Name</td>
+                            <td class="align-middle text-truncate" style="max-width: 200px;" title="@obj.Description">@obj.Description</td>
+                            <td class="align-middle">@obj.Brand</td>
+                            <td class="align-middle">@obj.Processor</td>
+                            <td class="align-middle">@obj.RAM</td>
+                            <td class="align-middle">@obj.Storage</td>
+                            <td class="align-middle">@obj.GPU</td>
+                            <td class="align-middle">@obj.ScreenSize</td>
+                            <td class="align-middle">@obj.Resolution</td>
+                            <td class="align-middle">@obj.Price.ToString("C")</td>
+                            <td class="align-middle">@obj.Category?.Name</td>
+                            <td class="align-middle">
+                                <div class="d-flex justify-content-center">
+                                    <a asp-controller="Product" asp-action="Upsert" asp-route-id="@obj.Id"
+                                       class="btn btn-primary mx-2 px-3 py-2">
+                                        <i class="bi bi-pencil-square me-2"></i> Edit
+                                    </a>
+                                    <a href="#" class="btn btn-danger mx-2 px-3 py-2 delete-product" data-id="@obj.Id">
+                                        <i class="bi bi-trash-fill me-2"></i> Delete
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
 
+        <!-- Pagination Links -->
+        <div class="d-flex justify-content-center my-4">
+            @if (ViewBag.Page > 1)
+            {
+                <a href="@Url.Action("Index", new { page = ViewBag.Page - 1 })" class="btn btn-secondary mx-2">Previous</a>
+            }
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                <a href="@Url.Action("Index", new { page = i })" class="btn @((i == ViewBag.Page) ? "btn-primary" : "btn-light") mx-1">
+                    @i
+                </a>
+            }
+            @if (ViewBag.Page < ViewBag.TotalPages)
+            {
+                <a href="@Url.Action("Index", new { page = ViewBag.Page + 1 })" class="btn btn-secondary mx-2">Next</a>
+            }
+        </div>
     </div>
 </div>
+
+<style>
+    .table-hover tbody tr:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        transition: background-color 0.2s ease;
+    }
+
+    .card {
+        border-radius: 0.5rem;
+    }
+
+    .input-group-text {
+        border-radius: 0.3rem 0 0 0.3rem !important;
+    }
+
+    .form-control, .form-select {
+        border-radius: 0 0.3rem 0.3rem 0 !important;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+        .pagination .btn {
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 16px;
+        }
+
+            .pagination .btn:hover {
+                background-color: #007bff;
+                color: white;
+            }
+</style>
+
 @section Scripts {
     <script>
         $(document).ready(function () {
+            // Live Search by product name
+            $('#productSearch').on('keyup', function () {
+                var value = $(this).val().toLowerCase();
+                filterProducts(value, $('#categoryFilter').val());
+            });
+
+            // Filter by category
+            $('#categoryFilter').on('change', function () {
+                var categoryId = $(this).val();
+                filterProducts($('#productSearch').val().toLowerCase(), categoryId);
+            });
+
+            function filterProducts(searchTerm, categoryId) {
+                $('#productTableBody tr').each(function () {
+                    var productName = $(this).data('name');
+                    var productCategory = $(this).data('category')?.toString() || '';
+
+                    var matchSearch = productName.includes(searchTerm);
+                    var matchCategory = categoryId ? productCategory === categoryId : true;
+
+                    $(this).toggle(matchSearch && matchCategory);
+                });
+            }
+
+            // Delete Product Logic
             $(".delete-product").click(function (e) {
                 e.preventDefault();
-                var productId = $(this).data("id"); // ✅ تعديل استدعاء data-id
+                var productId = $(this).data("id");
 
                 Swal.fire({
                     title: "Are you sure?",
@@ -86,13 +193,18 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: "/Admin/Product/Delete/ "+ productId,
-                            type: "POST", // ✅ تغيير `DELETE` إلى `POST`
-                            headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() }, // ✅ دعم CSRF لو مفعّل
+                            url: "/Admin/Product/Delete/" + productId,
+                            type: "POST",
+                            headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
                             success: function (response) {
                                 if (response.success) {
-                                    Swal.fire("Deleted!", response.message, "success");
-                                    setTimeout(() => location.reload(), 500);
+                                    Swal.fire({
+                                        title: "Deleted!",
+                                        text: response.message,
+                                        icon: "success",
+                                        timer: 1000,
+                                        showConfirmButton: false
+                                    }).then(() => location.reload());
                                 } else {
                                     Swal.fire("Error!", response.message, "error");
                                 }
@@ -107,6 +219,3 @@
         });
     </script>
 }
-
-
-

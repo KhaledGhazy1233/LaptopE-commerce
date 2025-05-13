@@ -20,6 +20,10 @@ namespace Tech.DataAccess.Repository
         public IOrderHeaderRepository OrderHeader { get; set; }
         public IOrderDetailsRepository OrderDetail { get; set; }
         public IDiscountRepository Discount { get; set; }
+
+        public IWishListRepository WishList { get; set; }
+
+        public IWishListItemRepository WishListItem { get; set; }
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
@@ -30,6 +34,8 @@ namespace Tech.DataAccess.Repository
             OrderHeader = new OrderHeaderRepository(_db);
             OrderDetail = new OrderDetailsRepository(_db);
             Discount = new DiscountRepository(_db);
+            WishList = new WishListRepository(_db);
+            WishListItem = new WishListItemRepository(_db);
         }
         public void Save()
         {

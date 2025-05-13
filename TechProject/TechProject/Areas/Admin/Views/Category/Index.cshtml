@@ -9,16 +9,25 @@
         </div>
     </div>
     <div class="card-body p-4">
-        <div class="row pb-3">
-            <div class="col-6">
+        <!-- Search Form -->
+        <div class="row pb-3 align-items-center">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text bg-primary text-white">
+                        <i class="bi bi-search"></i>
+                    </span>
+                    <input type="text" id="categorySearch" class="form-control form-control-lg"
+                           placeholder="Search by category name..." />
+                </div>
             </div>
-            <div class="col-6 text-end">
+            <div class="col-md-6 text-end">
                 <a asp-controller="Category" asp-action="Create" class="btn btn-secondary">
-                    <i class="bi bi-plus-circle"></i>  Create New Category
+                    <i class="bi bi-plus-circle"></i> Create New Category
                 </a>
             </div>
         </div>
 
+        <!-- Category Table -->
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -31,17 +40,15 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="categoryTableBody">
                 @foreach (var obj in Model)
                 {
-                    <tr>
+                    <tr class="categoryRow" data-name="@obj.Name.ToLower()">
                         <td>@obj.Name</td>
-                        <td>
-                            @obj.Description
-                        </td>
+                        <td>@obj.Description</td>
                         <td>
                             <div class="w-75 btn-group" role="group">
-                                <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-secondary mx-2">
+                                <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
                                     <i class="bi bi-pencil-square"></i> Edit
                                 </a>
                                 <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
@@ -53,6 +60,25 @@
                 }
             </tbody>
         </table>
-
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Live Search by category name
+            $('#categorySearch').on('keyup', function () {
+                var value = $(this).val().toLowerCase();
+                filterCategories(value);
+            });
+
+            function filterCategories(searchTerm) {
+                $('#categoryTableBody tr').each(function () {
+                    var categoryName = $(this).data('name');
+                    var matchSearch = categoryName.includes(searchTerm);
+                    $(this).toggle(matchSearch);
+                });
+            }
+        });
+    </script>
+}

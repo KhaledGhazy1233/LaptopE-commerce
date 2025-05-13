@@ -15,6 +15,10 @@ namespace Tech.DataAccess.Repository.IRepository
         IOrderHeaderRepository OrderHeader { get; }
         IOrderDetailsRepository OrderDetail { get; }
         IDiscountRepository Discount { get; }
+
+        IWishListRepository WishList { get; }
+
+        IWishListItemRepository WishListItem { get; }
         void Save();
     }
 }

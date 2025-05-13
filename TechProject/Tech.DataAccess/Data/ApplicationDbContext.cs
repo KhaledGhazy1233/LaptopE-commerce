@@ -120,5 +120,7 @@ namespace TechProject.DataAccess.Data
         public DbSet<OrderDetails> OrderDetails { get; set; }
         public DbSet<OrderHeader> OrderHeader { get; set; }
         public DbSet<Discount> Discount { get; set; }
+        public DbSet<WishList> Wishlists { get; set; }
+        public DbSet<WishListItem> WishlistItems { get; set; }
     }
 }

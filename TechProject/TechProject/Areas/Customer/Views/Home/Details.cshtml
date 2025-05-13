@@ -7,16 +7,62 @@
 
         .thumbnail-image:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
 
     .main-product-image {
         transition: opacity 0.3s ease;
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: contain;
+        cursor: pointer;
     }
 
     .active-thumbnail {
         border: 2px solid #0d6efd !important;
     }
+
+    .product-price {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+    }
+
+    .original-price {
+        text-decoration: line-through;
+        color: #777;
+    }
+
+    .discounted-price {
+        font-size: 1.5rem;
+        color: #28a745;
+        font-weight: bold;
+    }
+
+    .quantity-input {
+        width: 60px;
+    }
+
+    .product-specs li {
+        margin-bottom: 8px;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
+
+    .wishlist-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border: 1px solid #ccc;
+    }
+
+        .wishlist-btn i {
+            color: #ff5722;
+        }
 </style>
 
 <div class="container py-5">
@@ -26,11 +72,11 @@
             <div class="card">
                 @if (Model.ProductImages.Count > 0)
                 {
-                    <img src="@Model.ProductImages[0].ImageUrl" class="card-img-top main-product-image" alt="@Model.Name" style="cursor: pointer; max-height: 400px; object-fit: contain;">
+                    <img src="@Model.ProductImages[0].ImageUrl" class="card-img-top main-product-image" alt="@Model.Name">
                 }
                 else
                 {
-                    <img src="https://via.placeholder.com/600x400?text=No+Image" class="card-img-top main-product-image" alt="No Image" style="cursor: pointer; max-height: 400px; object-fit: contain;">
+                    <img src="https://via.placeholder.com/600x400?text=No+Image" class="card-img-top main-product-image" alt="No Image">
                 }
 
                 <div class="card-body">
@@ -41,7 +87,6 @@
                                 <img src="@Model.ProductImages[i].ImageUrl"
                                      class="img-thumbnail thumbnail-image @(i == 0 ? "active-thumbnail" : "")"
                                      alt="Thumbnail @(i + 1)"
-                                     style="cursor: pointer;"
                                      onclick="changeMainImage(this)">
                             </div>
                         }
@@ -53,15 +98,24 @@
         <!-- Product Details -->
         <div class="col-md-6">
             <h1 class="h2 mb-3">@Model.Name</h1>
-            <div class="mb-3">
-                <span class="h4 me-2">$@Model.Price</span>
-                @if (Model.Price > 0)
+
+            <!-- Product Price Section -->
+            <div class="mb-3 product-price">
+
+                @* Fix Discount here  , it doesn't come from db !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! *@
+                @if (Model.PriceAfterDiscount < (double)Model.Price)
                 {
-                    <span class="text-muted text-decoration-line-through">$@Model.Price</span>
-                    <span class="badge bg-danger ms-2">@((int)(100 - (Model.Price / Model.Price * 100)))% OFF</span>
+                    <span class="original-price">$@Model.Price</span>
+                    <span class="discounted-price">$@Model.PriceAfterDiscount</span>
+                    <span class="badge bg-danger ms-2">@Model.Presentage% OFF</span>
+                }
+                else
+                {
+                    <span class="discounted-price">$@Model.Price</span>
                 }
             </div>
 
+            <!-- Product Rating -->
             <div class="mb-3">
                 <div class="d-flex align-items-center">
                     <div class="text-warning me-2">
@@ -75,12 +129,13 @@
                 </div>
             </div>
 
+            <!-- Product Description -->
             <p class="mb-4">@Model.Description</p>
 
             <!-- Product Specifications -->
             <div class="mb-4">
                 <h6 class="mb-2">Specifications</h6>
-                <ul class="list-unstyled">
+                <ul class="list-unstyled product-specs">
                     <li><strong>Brand:</strong> @Model.Brand</li>
                     <li><strong>Processor:</strong> @Model.Processor</li>
                     <li><strong>RAM:</strong> @Model.RAM GB</li>
@@ -91,15 +146,14 @@
                 </ul>
             </div>
 
-            <!-- Quantity -->
+            <!-- Quantity and Actions -->
             <div class="mb-4">
                 <form method="post" asp-area="Customer" asp-controller="Cart" asp-action="AddToCart" id="addToCartForm">
                     <input type="hidden" name="productId" value="@Model.Id" />
                     <div class="d-flex align-items-center mb-3">
                         <label class="me-2"><strong>Quantity:</strong></label>
-                        <input type="number" name="quantity" value="1" min="1" max="100" class="form-control w-25">
+                        <input type="number" name="quantity" value="1" min="1" max="100" class="form-control quantity-input">
                     </div>
-                    <!-- Actions -->
                     <div class="d-grid gap-2 mt-3">
                         @if (User.Identity.IsAuthenticated)
                         {
@@ -110,8 +164,8 @@
                             <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Action("AddToCart", "Cart", new { productId = Model.Id, quantity = 1 })"
                                class="btn btn-primary">Add to Cart</a>
                         }
-                        <button class="btn btn-outline-secondary" type="button">
-                            <i class="far fa-heart me-2"></i>Add to Wishlist
+                        <button class="btn wishlist-btn" type="button">
+                            <i class="far fa-heart"></i>Add to Wishlist
                         </button>
                     </div>
                 </form>
@@ -140,7 +194,6 @@
     <script>
         function changeMainImage(thumbnail) {
             const mainImage = document.querySelector('.main-product-image');
-
             mainImage.style.opacity = 0;
 
             setTimeout(() => {
