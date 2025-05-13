@@ -269,15 +269,22 @@
                         <i class="fa fa-star-half"></i> 
                     </div> 
                     <div class="separator"></div>
-
-                    <div class="icons">
-                        <span title="Wishlist">❤</span>
+                    <div class="icons d-flex justify-content-center align-items-center">
+                        <!-- Add to Wishlist Form -->
+                        <form asp-area="Customer" asp-controller="Wishlist" asp-action="AddToWishlist" method="post">
+                            <input type="hidden" name="productId" value="@product.Id" />
+                            <button type="submit" title="Add to Wishlist" class="btn p-0 border-0 bg-transparent text-danger fs-4">
+                                ♥
+                            </button>
+                        </form>
                     </div>
+
                 </div>
             </div>
             <div class="view-details">  <span title="View"> <a asp-area="Customer" asp-controller="Home" asp-action="Details" asp-route-id="@product.Id" class="btn text-dark font-weight-bolder w-100 py-2"> view details &#128065;</a></span></div>
         </div>
         }
+        
 
     </div>
 @section Scripts {
