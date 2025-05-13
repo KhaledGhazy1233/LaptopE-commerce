@@ -21,7 +21,7 @@
             @{
                 var indicatorIndex = 0;
                 var imageCounter = 0;
-                var maxImages = 5; // عدد الصور اللي عايزة تعرضيهم
+                var maxImages = 5; 
                 foreach (var product in Model)
                 {
                     foreach (var image in product.ProductImages)
@@ -44,7 +44,7 @@
         <div class="carousel-inner">
             @{
                 var firstSlide = true;
-                imageCounter = 0; // نبدأ العداد من الأول
+                imageCounter = 0; 
                 foreach (var product in Model)
                 {
                     foreach (var image in product.ProductImages)
